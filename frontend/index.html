@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TRIAD STUDIO · Centro de Operaciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #060910;
+            --deep: #0a1020;
+            --panel: #0e1728;
+            --panel-2: #122036;
+            --line: #1d2c44;
+            --text: #e6edf7;
+            --muted: #7b8aa3;
+            --accent: #22d3ee;
+            --sylph: #3ddc97;
+            --roxy: #5eb0ff;
+            --eris: #ff6b6b;
+            --warn: #f5c451;
+            --mono: 'DM Mono', monospace;
+            --disp: 'Chakra Petch', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 13px;
+            overflow: hidden;
+            letter-spacing: .01em;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 999;
+            opacity: .05;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+        }
+
+        #bgCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            opacity: .55
+        }
+
+        .mesh {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 60% 50% at 12% 18%, rgba(61, 220, 151, .10), transparent 60%),
+                radial-gradient(ellipse 55% 55% at 88% 12%, rgba(94, 176, 255, .12), transparent 62%),
+                radial-gradient(ellipse 70% 60% at 70% 95%, rgba(255, 107, 107, .09), transparent 60%),
+                linear-gradient(180deg, #060910 0%, #081021 55%, #05080f 100%);
+        }
+
+        .wrap {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: 100vh
+        }
+
+        /* ---------- barra superior ---------- */
+        .topbar {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            height: 52px;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(10, 16, 32, .82);
+            backdrop-filter: blur(10px);
+        }
+
+        .brand {
+            font-family: var(--disp);
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: .34em
+        }
+
+        .brand span {
+            color: var(--accent)
+        }
+
+        .top-stats {
+            display: flex;
+            gap: 18px;
+            margin-left: auto;
+            font-size: 11px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .14em
+        }
+
+        .top-stats b {
+            color: var(--text);
+            font-weight: 500
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            background: var(--sylph);
+            box-shadow: 0 0 10px var(--sylph)
+        }
+
+        .dot.off {
+            background: var(--warn);
+            box-shadow: 0 0 10px var(--warn)
+        }
+
+        .clock {
+            font-family: var(--disp);
+            font-size: 13px;
+            letter-spacing: .18em;
+            color: var(--accent)
+        }
+
+        /* ---------- rejilla principal ---------- */
+        .main {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 340px 1fr 320px;
+            gap: 14px;
+            padding: 14px;
+            min-height: 0
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 0
+        }
+
+        .panel {
+            background: linear-gradient(160deg, rgba(18, 32, 54, .92), rgba(11, 19, 33, .94));
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+        }
+
+        .panel-head {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--line);
+            font-family: var(--disp);
+            font-size: 11px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .panel-head::before {
+            content: "";
+            width: 3px;
+            height: 13px;
+            background: var(--accent);
+            border-radius: 2px
+        }
+
+        .panel-body {
+            padding: 14px;
+            overflow: auto;
+            min-height: 0
+        }
+
+        .panel-body::-webkit-scrollbar {
+            width: 5px
+        }
+
+        .panel-body::-webkit-scrollbar-thumb {
+            background: #23344e;
+            border-radius: 4px
+        }
+
+        /* ---------- agentes ---------- */
+        .agents {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+
+        .agent-card {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 12px;
+            display: grid;
+            grid-template-columns: 84px 1fr;
+            gap: 12px;
+            align-items: center;
+            cursor: pointer;
+            background: rgba(14, 23, 40, .7);
+            transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
+            overflow: hidden;
+        }
+
+        .agent-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            opacity: .14;
+            background: radial-gradient(circle at 12% 20%, var(--c), transparent 62%);
+        }
+
+        .agent-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--c);
+            box-shadow: 0 14px 34px -18px var(--c)
+        }
+
+        .agent-card.active {
+            border-color: var(--c);
+            box-shadow: 0 0 0 1px var(--c), 0 18px 40px -20px var(--c)
+        }
+
+        .avatar {
+            width: 84px;
+            height: 84px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(165deg, #16243c, #0c1526);
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .avatar svg {
+            width: 100%;
+            height: 100%;
+            display: block
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-6px)
+            }
+        }
+
+        .eyes {
+            transform-origin: center 58%;
+            animation: blink 6.2s infinite
+        }
+
+        @keyframes blink {
+
+            0%,
+            92%,
+            100% {
+                transform: scaleY(1)
+            }
+
+            95% {
+                transform: scaleY(.08)
+            }
+        }
+
+        .mouth {
+            transform-origin: center;
+            transition: transform .18s ease
+        }
+
+        .speaking .mouth {
+            animation: talk .32s ease-in-out infinite alternate
+        }
+
+        @keyframes talk {
+            from {
+                transform: scaleY(.55)
+            }
+
+            to {
+                transform: scaleY(1.45)
+            }
+        }
+
+        .speaking .avatar {
+            animation: float 2.4s ease-in-out infinite
+        }
+
+        .agent-name {
+            font-family: var(--disp);
+            font-size: 14.5px;
+            font-weight: 600;
+            letter-spacing: .05em
+        }
+
+        .agent-role {
+            font-size: 10px;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            margin-top: 3px
+        }
+
+        .agent-spec {
+            font-size: 10.5px;
+            color: var(--c);
+            margin-top: 7px;
+            letter-spacing: .08em
+        }
+
+        .agent-state {
+            font-size: 10px;
+            color: #9fb2cc;
+            margin-top: 8px;
+            min-height: 13px
+        }
+
+        .voice-bars {
+            display: flex;
+            gap: 3px;
+            align-items: flex-end;
+            height: 12px;
+            margin-top: 8px;
+            opacity: .25
+        }
+
+        .speaking .voice-bars {
+            opacity: 1
+        }
+
+        .voice-bars i {
+            width: 3px;
+            background: var(--c);
+            border-radius: 2px;
+            height: 4px;
+            animation: vb .7s ease-in-out infinite alternate
+        }
+
+        .voice-bars i:nth-child(2) {
+            animation-delay: .12s;
+            height: 9px
+        }
+
+        .voice-bars i:nth-child(3) {
+            animation-delay: .24s;
+            height: 6px
+        }
+
+        .voice-bars i:nth-child(4) {
+            animation-delay: .36s;
+            height: 11px
+        }
+
+        @keyframes vb {
+            from {
+                transform: scaleY(.35)
+            }
+
+            to {
+                transform: scaleY(1.15)
+            }
+        }
+
+        /* ---------- chat ---------- */
+        .chat-panel {
+            flex: 1
+        }
+
+        #chat {
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+
+        .msg {
+            max-width: 86%;
+            padding: 12px 15px;
+            border-radius: 12px;
+            font-size: 12.6px;
+            line-height: 1.72;
+            border: 1px solid var(--line);
+            background: rgba(16, 27, 46, .82);
+            white-space: pre-wrap;
+            animation: rise .45s ease both
+        }
+
+        .msg.user {
+            align-self: flex-end;
+            background: rgba(34, 211, 238, .10);
+            border-color: rgba(34, 211, 238, .32)
+        }
+
+        .msg.agent {
+            align-self: flex-start
+        }
+
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(14px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .msg .who {
+            font-family: var(--disp);
+            font-size: 10px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+            color: var(--c, var(--accent))
+        }
+
+        .composer {
+            border-top: 1px solid var(--line);
+            padding: 12px;
+            display: flex;
+            gap: 10px
+        }
+
+        textarea#input {
+            flex: 1;
+            resize: none;
+            height: 64px;
+            background: rgba(8, 14, 26, .9);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            color: var(--text);
+            font-family: var(--mono);
+            font-size: 12.5px;
+            padding: 12px;
+            outline: none;
+            transition: border-color .25s ease
+        }
+
+        textarea#input:focus {
+            border-color: var(--accent)
+        }
+
+        button {
+            font-family: var(--disp);
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            font-size: 11px;
+            padding: 0 20px;
+            border-radius: 10px;
+            border: 1px solid var(--accent);
+            cursor: pointer;
+            background: rgba(34, 211, 238, .12);
+            color: var(--accent);
+            transition: all .25s ease
+        }
+
+        button:hover {
+            background: var(--accent);
+            color: #04121a;
+            letter-spacing: .22em
+        }
+
+        .quick {
+            display: flex;
+            gap: 8px;
+            padding: 0 12px 12px;
+            flex-wrap: wrap
+        }
+
+        .chip {
+            font-size: 10px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: 7px 12px;
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all .25s ease
+        }
+
+        .chip:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px)
+        }
+
+        /* ---------- registro y paneles ---------- */
+        #log {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            font-size: 11px
+        }
+
+        .log-line {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 10px;
+            padding: 7px 9px;
+            border-left: 2px solid var(--line);
+            background: rgba(12, 21, 38, .55);
+            border-radius: 0 7px 7px 0;
+            animation: rise .35s ease both
+        }
+
+        .log-line .t {
+            color: #4c5f7c;
+            font-size: 9.5px;
+            letter-spacing: .1em
+        }
+
+        .log-line.tool {
+            border-left-color: var(--accent)
+        }
+
+        .log-line.thought {
+            border-left-color: var(--roxy)
+        }
+
+        .log-line.error {
+            border-left-color: var(--eris)
+        }
+
+        .log-line.plan {
+            border-left-color: var(--sylph)
+        }
+
+        .mini {
+            font-size: 11px;
+            line-height: 1.85;
+            color: #b6c6dc
+        }
+
+        .mini b {
+            color: var(--text);
+            font-weight: 500
+        }
+
+        .bar {
+            height: 5px;
+            background: #16243a;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 7px 0 12px
+        }
+
+        .bar i {
+            display: block;
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), var(--sylph))
+        }
+
+        .metric {
+            display: flex;
+            justify-content: space-between;
+            padding: 7px 0;
+            border-bottom: 1px dashed #1c2b42;
+            font-size: 11px
+        }
+
+        .metric span:last-child {
+            color: var(--accent);
+            font-family: var(--disp);
+            letter-spacing: .1em
+        }
+
+        .ticker {
+            height: 30px;
+            border-top: 1px solid var(--line);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: rgba(8, 14, 26, .85);
+            font-size: 10px;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: #4c5f7c
+        }
+
+        .ticker div {
+            display: flex;
+            gap: 52px;
+            white-space: nowrap;
+            animation: slide 38s linear infinite;
+            padding-left: 100%
+        }
+
+        @keyframes slide {
+            to {
+                transform: translateX(-100%)
+            }
+        }
+
+        .badge {
+            font-size: 9px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            border: 1px solid var(--line);
+            color: var(--muted)
+        }
+
+        .badge.on {
+            color: var(--sylph);
+            border-color: var(--sylph)
+        }
+
+        @media (max-width:1180px) {
+            .main {
+                grid-template-columns: 1fr;
+                overflow: auto
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bgCanvas"></canvas>
+    <div class="mesh"></div>
+
+    <div class="wrap">
+        <div class="topbar">
+            <div class="brand">TRIAD<span>·</span>STUDIO</div>
+            <div class="top-stats">
+                <div><span class="dot" id="engineDot"></span>Motor <b id="engineState">comprobando</b></div>
+                <div>Memoria <b id="memCount">0</b></div>
+                <div>Herramientas <b id="toolCount">0</b></div>
+                <div>Puntuación media <b id="avgScore">0.0</b></div>
+            </div>
+            <div class="clock" id="clock">00:00:00</div>
+        </div>
+
+        <div class="main">
+            <!-- columna izquierda: agentes -->
+            <div class="col">
+                <div class="panel" style="flex:1">
+                    <div class="panel-head">Equipo de programación</div>
+                    <div class="panel-body">
+                        <div class="agents" id="agents">
+
+                            <div class="agent-card" data-name="Sylphiette" style="--c:#3ddc97">
+                                <div class="avatar">
+                                    <svg viewBox="0 0 100 100">
+                                        <defs>
+                                            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                                                <stop offset="0" stop-color="#7ef0c0" />
+                                                <stop offset="1" stop-color="#2fae83" />
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="100" height="100" fill="#0d1a2c" />
+                                        <ellipse cx="50" cy="42" rx="26" ry="29" fill="#ffe0cf" />
+                                        <path d="M22 44 C20 14 80 12 78 46 C74 32 62 24 50 24 C36 24 26 32 22 44Z"
+                                            fill="url(#g1)" />
+                                        <path d="M22 44 C16 58 18 76 24 82 C22 66 24 54 27 47Z" fill="url(#g1)" />
+                                        <path d="M78 44 C84 58 82 76 76 82 C78 66 76 54 73 47Z" fill="url(#g1)" />
+                                        <g class="eyes">
+                                            <ellipse cx="39" cy="47" rx="5.4" ry="6.6" fill="#12233d" />
+                                            <ellipse cx="61" cy="47" rx="5.4" ry="6.6" fill="#12233d" />
+                                            <ellipse cx="39" cy="47" rx="3.1" ry="3.9" fill="#2fae83" />
+                                            <ellipse cx="61" cy="47" rx="3.1" ry="3.9" fill="#2fae83" />
+                                            <circle cx="37.4" cy="44.6" r="1.5" fill="#fff" />
+                                            <circle cx="59.4" cy="44.6" r="1.5" fill="#fff" />
+                                        </g>
+                                        <ellipse cx="31" cy="55" rx="4.6" ry="2.3" fill="#ff9d9d" opacity=".38" />
+                                        <ellipse cx="69" cy="55" rx="4.6" ry="2.3" fill="#ff9d9d" opacity=".38" />
+                                        <g class="mouth">
+                                            <ellipse cx="50" cy="60" rx="3" ry="1.9" fill="#c2585c" />
+                                        </g>
+                                        <path d="M30 84 C36 74 64 74 70 84 L70 100 L30 100Z" fill="#1c3a52" />
+                                        <rect x="46" y="76" width="8" height="12" fill="#ffe0cf" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="agent-name">Sylphiette</div>
+                                    <div class="agent-role">Interfaz y documentación</div>
+                                    <div class="agent-spec">Frontend · UI/UX · Informes</div>
+                                    <div class="agent-state">En espera</div>
+                                    <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
+                                </div>
+                            </div>
+
+                            <div class="agent-card" data-name="Roxy" style="--c:#5eb0ff">
+                                <div class="avatar">
+                                    <svg viewBox="0 0 100 100">
+                                        <defs>
+                                            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+                                                <stop offset="0" stop-color="#9ccfff" />
+                                                <stop offset="1" stop-color="#3d67c9" />
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="100" height="100" fill="#0c1730" />
+                                        <ellipse cx="50" cy="43" rx="25" ry="28" fill="#ffe6d6" />
+                                        <path d="M20 48 C16 12 84 12 80 48 C78 26 66 18 50 18 C34 18 22 26 20 48Z"
+                                            fill="url(#g2)" />
+                                        <path d="M20 48 C12 70 16 92 22 96 C18 78 20 60 25 50Z" fill="url(#g2)" />
+                                        <path d="M80 48 C88 70 84 92 78 96 C82 78 80 60 75 50Z" fill="url(#g2)" />
+                                        <path d="M42 16 L50 6 L58 16 Z" fill="url(#g2)" />
+                                        <g class="eyes">
+                                            <ellipse cx="39" cy="48" rx="5.2" ry="6.4" fill="#101f38" />
+                                            <ellipse cx="61" cy="48" rx="5.2" ry="6.4" fill="#101f38" />
+                                            <ellipse cx="39" cy="48" rx="3" ry="3.8" fill="#3d67c9" />
+                                            <ellipse cx="61" cy="48" rx="3" ry="3.8" fill="#3d67c9" />
+                                            <circle cx="37.5" cy="45.6" r="1.4" fill="#fff" />
+                                            <circle cx="59.5" cy="45.6" r="1.4" fill="#fff" />
+                                        </g>
+                                        <ellipse cx="31" cy="56" rx="4.4" ry="2.1" fill="#ff9d9d" opacity=".34" />
+                                        <ellipse cx="69" cy="56" rx="4.4" ry="2.1" fill="#ff9d9d" opacity=".34" />
+                                        <g class="mouth">
+                                            <ellipse cx="50" cy="61" rx="2.8" ry="1.8" fill="#c2585c" />
+                                        </g>
+                                        <path d="M28 86 C36 75 64 75 72 86 L72 100 L28 100Z" fill="#22315e" />
+                                        <rect x="46" y="77" width="8" height="11" fill="#ffe6d6" />
+                                        <circle cx="50" cy="30" r="3" fill="#ffd76a" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="agent-name">Roxy</div>
+                                    <div class="agent-role">Arquitecta backend y datos</div>
+                                    <div class="agent-spec">APIs · IA · Bases de datos</div>
+                                    <div class="agent-state">En espera</div>
+                                    <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
+                                </div>
+                            </div>
+
+                            <div class="agent-card" data-name="Eris" style="--c:#ff6b6b">
+                                <div class="avatar">
+                                    <svg viewBox="0 0 100 100">
+                                        <defs>
+                                            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+                                                <stop offset="0" stop-color="#ff9d7a" />
+                                                <stop offset="1" stop-color="#c93f3f" />
+                                            </linearGradient>
+                                        </defs>
+                                        <rect width="100" height="100" fill="#22101c" />
+                                        <ellipse cx="50" cy="43" rx="25.5" ry="28" fill="#ffe2cd" />
+                                        <path d="M18 52 C14 10 86 10 82 52 C78 28 66 18 50 18 C34 18 22 28 18 52Z"
+                                            fill="url(#g3)" />
+                                        <path d="M18 52 C8 72 14 96 22 98 C16 80 18 62 26 52Z" fill="url(#g3)" />
+                                        <path d="M82 52 C92 72 86 96 78 98 C84 80 82 62 74 52Z" fill="url(#g3)" />
+                                        <path d="M30 30 C36 22 46 18 52 20" stroke="#ff9d7a" stroke-width="3"
+                                            fill="none" />
+                                        <g class="eyes">
+                                            <ellipse cx="39" cy="48" rx="5.6" ry="6.8" fill="#2a121a" />
+                                            <ellipse cx="61" cy="48" rx="5.6" ry="6.8" fill="#2a121a" />
+                                            <ellipse cx="39" cy="48" rx="3.2" ry="4" fill="#c93f3f" />
+                                            <ellipse cx="61" cy="48" rx="3.2" ry="4" fill="#c93f3f" />
+                                            <circle cx="37.3" cy="45.4" r="1.5" fill="#fff" />
+                                            <circle cx="59.3" cy="45.4" r="1.5" fill="#fff" />
+                                        </g>
+                                        <ellipse cx="31" cy="56" rx="4.8" ry="2.4" fill="#ff8f8f" opacity=".42" />
+                                        <ellipse cx="69" cy="56" rx="4.8" ry="2.4" fill="#ff8f8f" opacity=".42" />
+                                        <g class="mouth">
+                                            <ellipse cx="50" cy="61" rx="3.2" ry="2" fill="#b8444c" />
+                                        </g>
+                                        <path d="M27 86 C36 74 64 74 73 86 L73 100 L27 100Z" fill="#5c1f26" />
+                                        <rect x="46" y="77" width="8" height="11" fill="#ffe2cd" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="agent-name">Eris</div>
+                                    <div class="agent-role">Sistemas y automatización</div>
+                                    <div class="agent-spec">DevOps · Juegos · Pruebas</div>
+                                    <div class="agent-state">En espera</div>
+                                    <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- columna central: conversación -->
+            <div class="col">
+                <div class="panel chat-panel">
+                    <div class="panel-head">Canal de operaciones</div>
+                    <div class="panel-body" id="chatScroll" style="flex:1">
+                        <div id="chat">
+                            <div class="msg agent" style="--c:#22d3ee">
+                                <div class="who">Director · Sistema</div>
+                                Sistema TRIAD iniciado. Las tres programadoras están conectadas a memoria
+                                permanente. Escribe tu objetivo y lo ejecutaré con el equipo.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="quick">
+                        <div class="chip" data-q="Crea una landing page profesional para una empresa de software">
+                            Landing profesional</div>
+                        <div class="chip"
+                            data-q="Genera un informe universitario sobre inteligencia artificial aplicada a la educación">
+                            Informe universitario</div>
+                        <div class="chip"
+                            data-q="Crea un bot de automatización en Python que organice archivos y genere reportes">Bot
+                            automatizador</div>
+                        <div class="chip"
+                            data-q="Diseña la arquitectura de una plataforma SaaS con base de datos, autenticación y pagos">
+                            Plataforma SaaS</div>
+                        <div class="chip" data-q="Crea un prototipo de juego 2D con inventario, misiones y enemigos">
+                            Prototipo de juego</div>
+                    </div>
+                    <div class="composer">
+                        <textarea id="input"
+                            placeholder="Escribe el objetivo completo. Sé detallado: el equipo divide, ejecuta y documenta."></textarea>
+                        <button id="send">Ejecutar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- columna derecha: monitor -->
+            <div class="col">
+                <div class="panel" style="flex:1.25">
+                    <div class="panel-head">Actividad en vivo</div>
+                    <div class="panel-body">
+                        <div id="log"></div>
+                    </div>
+                </div>
+                <div class="panel" style="flex:1">
+                    <div class="panel-head">Memoria y evolución</div>
+                    <div class="panel-body">
+                        <div class="metric"><span>Memorias almacenadas</span><span id="mMem">0</span></div>
+                        <div class="metric"><span>Mensajes registrados</span><span id="mMsg">0</span></div>
+                        <div class="metric"><span>Herramientas creadas</span><span id="mTools">0</span></div>
+                        <div class="metric"><span>Reglas aprendidas</span><span id="mLearn">0</span></div>
+                        <div class="metric"><span>Evaluaciones</span><span id="mEval">0</span></div>
+                        <div class="bar"><i id="evoBar" style="width:20%"></i></div>
+                        <div class="mini" id="evoText">Monitorizando la curva de aprendizaje...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ticker">
+            <div id="tickerTrack">
+                <span>TRIAD STUDIO · MEMORIA PERSISTENTE ACTIVA</span>
+                <span>SYLPHIETTE · INTERFAZ Y DOCUMENTACIÓN</span>
+                <span>ROXY MIGURDIA · BACKEND E INTELIGENCIA ARTIFICIAL</span>
+                <span>ERIS BOREAS GREYRAT · SISTEMAS Y AUTOMATIZACIÓN</span>
+                <span>AUTOMEJORA CONTROLADA CON REVERSIÓN AUTOMÁTICA</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const $ = s => document.querySelector(s);
+        const chat = $('#chat'), logBox = $('#log');
+
+        /* ---------- fondo animado: constelación de datos ---------- */
+        (function () {
+            const c = $('#bgCanvas'), ctx = c.getContext('2d');
+            let w, h, pts = [];
+            function resize() {
+                w = c.width = innerWidth; h = c.height = innerHeight;
+                pts = Array.from({ length: Math.min(110, Math.floor(w / 14)) }, () => ({
+                    x: Math.random() * w, y: Math.random() * h,
+                    vx: (Math.random() - .5) * .22, vy: (Math.random() - .5) * .22,
+                    r: Math.random() * 1.6 + .4
+                }));
+            }
+            addEventListener('resize', resize); resize();
+            (function loop() {
+                ctx.clearRect(0, 0, w, h);
+                for (const p of pts) {
+                    p.x += p.vx; p.y += p.vy;
+                    if (p.x < 0 || p.x > w) p.vx *= -1;
+                    if (p.y < 0 || p.y > h) p.vy *= -1;
+                    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(120,190,255,.55)'; ctx.fill();
+                }
+                for (let i = 0; i < pts.length; i++) {
+                    for (let j = i + 1; j < pts.length; j++) {
+                        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+                        const d = Math.hypot(dx, dy);
+                        if (d < 132) {
+                            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+                            ctx.strokeStyle = `rgba(90,160,235,${(1 - d / 132) * .18})`;
+                            ctx.lineWidth = .7; ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(loop);
+            })();
+        })();
+
+        /* ---------- reloj ---------- */
+        setInterval(() => {
+            const d = new Date();
+            $('#clock').textContent = d.toLocaleTimeString('es-ES', { hour12: false });
+        }, 1000);
+
+        /* ---------- voz ---------- */
+        let voiceOn = true;
+        function speak(text, agent) {
+            if (!voiceOn || !('speechSynthesis' in window)) return;
+            const clean = text.replace(/[#*`>\[\]|]/g, '').slice(0, 420);
+            const u = new SpeechSynthesisUtterance(clean);
+            u.lang = 'es-ES';
+            const cfg = {
+                'Sylphiette': { pitch: 1.3, rate: 1.05 },
+                'Roxy': { pitch: .95, rate: .97 },
+                'Eris': { pitch: 1.12, rate: 1.12 }
+            }[agent] || { pitch: 1, rate: 1 };
+            u.pitch = cfg.pitch; u.rate = cfg.rate;
+            const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('es'));
+            if (voices.length) u.voice = voices[Math.floor(Math.random() * voices.length)];
+            setSpeaking(agent, true);
+            u.onend = () => setSpeaking(agent, false);
+            speechSynthesis.speak(u);
+        }
+        function setSpeaking(name, on) {
+            document.querySelectorAll('.agent-card').forEach(card => {
+                if (card.dataset.name === name) card.classList.toggle('speaking', on);
+            });
+        }
+
+        /* ---------- registro de actividad ---------- */
+        function addLog(type, agent, text) {
+            const el = document.createElement('div');
+            el.className = 'log-line ' + type;
+            const t = new Date().toLocaleTimeString('es-ES', { hour12: false });
+            el.innerHTML = `<div class="t">${t}</div><div><b style="color:#8fb6e0">${agent}</b> · ${text}</div>`;
+            logBox.prepend(el);
+            while (logBox.children.length > 60) logBox.lastChild.remove();
+        }
+
+        /* ---------- conversación ---------- */
+        function addMsg(who, text, color, speakIt) {
+            const el = document.createElement('div');
+            el.className = 'msg ' + (who === 'Tú' ? 'user' : 'agent');
+            el.style.setProperty('--c', color || '#22d3ee');
+            el.innerHTML = `<div class="who">${who}</div>${escapeHtml(text)}`;
+            chat.appendChild(el);
+            $('#chatScroll').scrollTop = $('#chatScroll').scrollHeight;
+            if (speakIt) speak(text, who.split(' ·')[0]);
+        }
+        function escapeHtml(s) {
+            return s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+        }
+
+        async function send() {
+            const input = $('#input');
+            const text = input.value.trim();
+            if (!text) return;
+            input.value = '';
+            addMsg('Tú', text, '#22d3ee', false);
+            addLog('plan', 'Director', 'nueva directiva recibida, repartiendo al equipo');
+            $('#send').disabled = true;
+            try {
+                const r = await fetch('/api/chat', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text, session: 'default' })
+                });
+                const data = await r.json();
+                if (data.results && data.results.length === 1) {
+                    const res = data.results[0];
+                    addMsg(res.agent, res.reply, colorOf(res.agent), true);
+                } else {
+                    addMsg('Director · Sistema', data.reply || 'Proceso completado.', '#22d3ee', true);
+                }
+                refreshState();
+            } catch (err) {
+                addLog('error', 'Sistema', 'fallo de conexión: ' + err.message);
+            } finally {
+                $('#send').disabled = false;
+                input.focus();
+            }
+        }
+        function colorOf(name) {
+            return { 'Sylphiette': '#3ddc97', 'Roxy Migurdia': '#5eb0ff', 'Eris': '#ff6b6b' }[name] || '#22d3ee';
+        }
+
+        $('#send').addEventListener('click', send);
+        $('#input').addEventListener('keydown', e => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
+        });
+        document.querySelectorAll('.chip').forEach(c => {
+            c.addEventListener('click', () => { $('#input').value = c.dataset.q; send(); });
+        });
+        document.querySelectorAll('.agent-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                $('#input').placeholder = 'Encargando directamente a ' + card.dataset.name + '...';
+                $('#input').dataset.agent = card.dataset.name;
+            });
+        });
+
+        /* ---------- WebSocket en vivo ---------- */
+        function connectWS() {
+            const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+            const ws = new WebSocket(`${proto}://${location.host}/ws`);
+            ws.onmessage = ev => {
+                const e = JSON.parse(ev.data);
+                addLog(e.type, e.agent, e.text);
+                if (e.type === 'status' || e.type === 'plan') {
+                    const card = [...document.querySelectorAll('.agent-card')]
+                        .find(c => c.dataset.name === e.agent);
+                    if (card) card.querySelector('.agent-state').textContent = e.text.slice(0, 64);
+                }
+                if (e.type === 'score') refreshState();
+            };
+            ws.onclose = () => setTimeout(connectWS, 2500);
+        }
+        connectWS();
+
+        /* ---------- estado del sistema ---------- */
+        async function refreshState() {
+            try {
+                const r = await fetch('/api/state');
+                const s = await r.json();
+                $('#engineState').textContent = s.engine === 'online' ? 'modelo conectado' : 'modo offline';
+                $('#engineDot').classList.toggle('off', s.engine !== 'online');
+                $('#memCount').textContent = s.stats.memories;
+                $('#toolCount').textContent = s.stats.tools;
+                $('#avgScore').textContent = s.stats.avg_score;
+                $('#mMem').textContent = s.stats.memories;
+                $('#mMsg').textContent = s.stats.messages;
+                $('#mTools').textContent = s.stats.tools;
+                $('#mLearn').textContent = s.stats.learnings;
+                $('#mEval').textContent = s.stats.evaluations;
+                const evo = s.evolution || {};
+                $('#evoBar').style.width = Math.max(8, Math.round((evo.average || 0) * 100)) + '%';
+                $('#evoText').textContent =
+                    `Muestras: ${evo.samples || 0} · Media: ${evo.average || 0} · Tendencia: ${evo.trend || 0}`;
+            } catch (err) { /* servidor reiniciando */ }
+        }
+        refreshState();
+        setInterval(refreshState, 5000);
+    </script>
+</body>
+
+</html>
