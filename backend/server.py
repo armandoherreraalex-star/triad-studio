@@ -1,4 +1,4 @@
-﻿
+
 """Servidor FastAPI: panel web, API REST, proyectos, agentes, voz y eventos."""
 
 import asyncio
