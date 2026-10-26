@@ -2,11 +2,11 @@
 """Servidor FastAPI: panel web, API REST, proyectos, agentes, voz y eventos."""
 
 import asyncio
-<<<<<<< HEAD
+  HEAD
 from .r2_backup import backup_all
 from pathlib import Path
-=======
->>>>>>> 3fad767 (Actualizar proyecto)
+
+ 3fad767 (Actualizar proyecto)
 from typing import Optional
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
