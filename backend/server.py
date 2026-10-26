@@ -20,7 +20,6 @@ from backend.agent_factory import (
 from backend.agents import AGENTS as _ALL_AGENTS, AgentRuntime
 from backend.memory import memory
 from backend.orchestrator import orchestrator
-from backend.persist import backup_now
 from backend.projects import project_manager
 from backend.quality import run_project_tests
 from backend.self_improve import improver
