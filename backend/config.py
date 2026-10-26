@@ -36,7 +36,7 @@ class Settings:
     llm_timeout: int = int(os.getenv("LLM_TIMEOUT", "180"))
     max_steps: int = int(os.getenv("MAX_STEPS", "6"))
     command_timeout: int = int(os.getenv("COMMAND_TIMEOUT", "60"))
-    host: str = os.getenv("HOST", "127.0.0.1")
+   host: str = os.getenv("HOST", "0.0.0.0")
     port: int = int(os.getenv("PORT", "8000"))
 
 
