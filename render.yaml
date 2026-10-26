@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: triad-studio
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+
+      - key: PORT
+        value: 10000
+
+      - key: LLM_BASE_URL
+        sync: false
+
+      - key: LLM_API_KEY
+        sync: false
+
+      - key: LLM_MODEL
+        sync: false
+
+      - key: R2_ENDPOINT
+        sync: false
+
+      - key: R2_KEY_ID
+        sync: false
+
+      - key: R2_SECRET
+        sync: false
+
+      - key: R2_BUCKET
+        value: triad-backups
+
+      - key: R2_PREFIX
+        value: triad
