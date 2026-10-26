@@ -201,3 +201,225 @@ def load_custom_tools() -> int:
                           meta.get("parameters", {}), meta["run"])
         loaded += 1
     return loaded
+    
+# ================= FASE 2 · FÁBRICA DE APLICACIONES =================
+
+def _scaffold(args):
+    from .templates import create_project
+
+    meta = create_project(
+        args["template"],
+        args.get("name") or args["template"],
+        args.get("vars") or {}
+    )
+    return json.dumps(meta, ensure_ascii=False, indent=2)
+
+
+def _list_templates(args):
+    from .templates import list_templates
+
+    return json.dumps(list_templates(), ensure_ascii=False, indent=2)
+
+
+def _read_template(args):
+    from .templates import read_template_file, template_info
+
+    if args.get("path"):
+        return read_template_file(args["template"], args["path"])
+
+    return json.dumps(
+        template_info(args["template"]),
+        ensure_ascii=False,
+        indent=2
+    )
+
+
+def _list_projects(args):
+    from .projects import project_manager
+
+    return json.dumps(
+        project_manager.list(),
+        ensure_ascii=False,
+        indent=2
+    )
+
+
+def _run_dev_server(args):
+    from .projects import project_manager
+
+    result = project_manager.start(
+        args["project"],
+        args.get("command", "serve")
+    )
+    return json.dumps(result, ensure_ascii=False)
+
+
+def _stop_dev_server(args):
+    from .projects import project_manager
+
+    return json.dumps(
+        project_manager.stop(args["project"]),
+        ensure_ascii=False
+    )
+
+
+def _install_dependencies(args):
+    from .projects import project_manager
+
+    return project_manager.install(args["project"])
+
+
+def _export_project(args):
+    from .projects import project_manager
+
+    path = project_manager.export(args["project"])
+    return f"Proyecto exportado en: {path}"
+
+
+def _project_log(args):
+    from .projects import project_manager
+
+    return project_manager.log_tail(
+        args["project"],
+        int(args.get("lines", 40))
+    )
+
+
+def _system_doctor(args):
+    import platform
+    from .llm import get_engine
+    from .templates import list_templates
+
+    lines = [
+        f"Python {platform.python_version()} · {platform.system()}"
+    ]
+
+    try:
+        engine = get_engine()
+        connected = engine.__class__.__name__ == "LLMClient"
+        lines.append(
+            f"Motor de IA: {'conectado' if connected else 'modo offline'}"
+        )
+    except Exception as exc:
+        lines.append(f"Motor de IA: ERROR ({exc})")
+
+    try:
+        templates = list_templates()
+
+        for template in templates:
+            status = (
+                "instalada"
+                if template.get("installed", False)
+                else "FALTA (crea sus archivos)"
+            )
+            lines.append(
+                f"Plantilla {template.get('id', 'desconocida')}: {status}"
+            )
+    except Exception as exc:
+        lines.append(f"Plantillas: ERROR ({exc})")
+
+    try:
+        stats = memory.stats()
+        lines.append(
+            f"Memoria: {stats['memories']} memorias · "
+            f"{stats['tools']} herramientas · "
+            f"{stats['learnings']} reglas aprendidas"
+        )
+    except Exception as exc:
+        lines.append(f"Memoria: ERROR ({exc})")
+
+    try:
+        probe = WORKSPACE_DIR / ".doctor.txt"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink()
+        lines.append("Workspace: escribible")
+    except Exception as exc:
+        lines.append(f"Workspace: ERROR ({exc})")
+
+    return "\n".join(lines)
+
+
+# ================= REGISTRO DE HERRAMIENTAS · FASE 2 =================
+
+registry.register(
+    "scaffold_project",
+    "Crea un proyecto completo desde una plantilla.",
+    {
+        "template": "string",
+        "name": "string",
+        "vars": "objeto opcional"
+    },
+    _scaffold
+)
+
+registry.register(
+    "list_templates",
+    "Lista las plantillas disponibles y su estado.",
+    {},
+    _list_templates
+)
+
+registry.register(
+    "read_template",
+    "Muestra los archivos o el contenido de una plantilla.",
+    {
+        "template": "string",
+        "path": "string opcional"
+    },
+    _read_template
+)
+
+registry.register(
+    "list_projects",
+    "Lista los proyectos creados y su estado.",
+    {},
+    _list_projects
+)
+
+registry.register(
+    "run_dev_server",
+    "Ejecuta un proyecto en segundo plano.",
+    {
+        "project": "string",
+        "command": "string opcional"
+    },
+    _run_dev_server
+)
+
+registry.register(
+    "stop_dev_server",
+    "Detiene un proyecto en ejecución.",
+    {"project": "string"},
+    _stop_dev_server
+)
+
+registry.register(
+    "install_dependencies",
+    "Instala las dependencias de un proyecto.",
+    {"project": "string"},
+    _install_dependencies
+)
+
+registry.register(
+    "export_project",
+    "Exporta un proyecto como archivo ZIP.",
+    {"project": "string"},
+    _export_project
+)
+
+registry.register(
+    "project_log",
+    "Muestra las últimas líneas del registro de un proyecto.",
+    {
+        "project": "string",
+        "lines": "int opcional"
+    },
+    _project_log
+)
+
+registry.register(
+    "system_doctor",
+    "Diagnostica el estado del sistema.",
+    {},
+    _system_doctor
+)

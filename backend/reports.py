@@ -44,7 +44,7 @@ _TEMPLATE = """<!DOCTYPE html>
     <div class="meta">{meta}</div>
   </header>
   {body}
-  <footer>Generado por TRIAD STUDIO · Sylphiette · Roxy Migurdia · Eris Boreas Greyrat</footer>
+  <footer>Generado por TRIAD STUDIO · Sylphiette · Roxy · Eris</footer>
 </div>
 </body>
 </html>"""

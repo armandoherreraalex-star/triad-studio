@@ -11,10 +11,10 @@ ROUTE = {
     "Sylphiette": ["frontend", "interfaz", "ui", "ux", "css", "html", "react", "diseño",
                    "informe", "documento", "app móvil", "movil", "accesibilidad", "web",
                    "landing", "presentación", "logo"],
-    "Roxy Migurdia": ["backend", "api", "base de datos", "datos", "python", "algoritmo",
+    "Roxy": ["backend", "api", "base de datos", "datos", "python", "algoritmo",
                       "inteligencia artificial", "ia ", "rag", "investig", "informe universitario",
                       "universidad", "sql", "arquitectura", "modelo", "seguridad", "análisis"],
-    "Eris Boreas Greyrat": ["automatiz", "script", "terminal", "ejecut", "devops", "docker",
+    "Eris": ["automatiz", "script", "terminal", "ejecut", "devops", "docker",
                             "prueba", "test", "juego", "game", "rendimiento", "depur",
                             "error", "compilar", "sistema", "infraestructura", "bot"],
 }
@@ -24,7 +24,7 @@ def classify(text: str) -> str:
     low = text.lower()
     scores = {name: sum(low.count(k) for k in keys) for name, keys in ROUTE.items()}
     best = max(scores, key=scores.get)
-    return best if scores[best] > 0 else "Roxy Migurdia"
+    return best if scores[best] > 0 else "Roxy"
 
 
 def split_tasks(text: str) -> list:

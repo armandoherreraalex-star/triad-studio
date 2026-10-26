@@ -1,0 +1,150 @@
+{
+    "defaults": {
+        "headPivot": {
+            "x": 50,
+            "y": 58
+        },
+        "eyes": [
+            {
+                "x": 39,
+                "y": 50,
+                "rx": 8,
+                "ry": 9
+            },
+            {
+                "x": 61,
+                "y": 50,
+                "rx": 8,
+                "ry": 9
+            }
+        ],
+        "mouth": {
+            "x": 50,
+            "y": 63,
+            "rx": 8,
+            "ry": 7
+        },
+        "skin": "#ffd9c4",
+        "amplitude": {
+            "head": 1.0,
+            "breath": 1.0,
+            "float": 1.0,
+            "blink": 1.0,
+            "talk": 1.0,
+            "gaze": 1.0,
+            "hair": 1.0
+        },
+        "speed": 1.0
+    },
+    "sylphiette": {
+        "headPivot": {
+            "x": 50,
+            "y": 58
+        },
+        "eyes": [
+            {
+                "x": 39,
+                "y": 50,
+                "rx": 8,
+                "ry": 9
+            },
+            {
+                "x": 61,
+                "y": 50,
+                "rx": 8,
+                "ry": 9
+            }
+        ],
+        "mouth": {
+            "x": 50,
+            "y": 63,
+            "rx": 8,
+            "ry": 7
+        },
+        "skin": "#ffe0cf",
+        "amplitude": {
+            "head": 0.9,
+            "breath": 1.1,
+            "float": 1.1,
+            "blink": 1.0,
+            "talk": 1.0,
+            "gaze": 1.1,
+            "hair": 1.2
+        },
+        "speed": 0.85
+    },
+    "roxy": {
+        "headPivot": {
+            "x": 50,
+            "y": 58
+        },
+        "eyes": [
+            {
+                "x": 39,
+                "y": 51,
+                "rx": 8,
+                "ry": 9
+            },
+            {
+                "x": 61,
+                "y": 51,
+                "rx": 8,
+                "ry": 9
+            }
+        ],
+        "mouth": {
+            "x": 50,
+            "y": 64,
+            "rx": 7,
+            "ry": 6
+        },
+        "skin": "#ffe6d6",
+        "amplitude": {
+            "head": 0.7,
+            "breath": 0.9,
+            "float": 0.8,
+            "blink": 0.9,
+            "talk": 0.9,
+            "gaze": 0.8,
+            "hair": 1.0
+        },
+        "speed": 0.7
+    },
+    "eris": {
+        "headPivot": {
+            "x": 50,
+            "y": 58
+        },
+        "eyes": [
+            {
+                "x": 39,
+                "y": 51,
+                "rx": 8,
+                "ry": 9
+            },
+            {
+                "x": 61,
+                "y": 51,
+                "rx": 8,
+                "ry": 9
+            }
+        ],
+        "mouth": {
+            "x": 50,
+            "y": 64,
+            "rx": 9,
+            "ry": 8
+        },
+        "skin": "#ffe2cd",
+        "amplitude": {
+            "head": 1.3,
+            "breath": 1.2,
+            "float": 1.3,
+            "blink": 1.1,
+            "talk": 1.3,
+            "gaze": 1.3,
+            "hair": 1.5
+        },
+        "speed": 1.25
+    }
+}

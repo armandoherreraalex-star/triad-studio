@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TRIAD STUDIO · Centro de Operaciones</title>
+    <title>TRIAD STUDIO Â· Centro de Operaciones</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -13,9 +13,7 @@
     <style>
         :root {
             --bg: #060910;
-            --deep: #0a1020;
             --panel: #0e1728;
-            --panel-2: #122036;
             --line: #1d2c44;
             --text: #e6edf7;
             --muted: #7b8aa3;
@@ -44,8 +42,7 @@
             color: var(--text);
             font-family: var(--mono);
             font-size: 13px;
-            overflow: hidden;
-            letter-spacing: .01em;
+            overflow: hidden
         }
 
         body::after {
@@ -55,7 +52,7 @@
             pointer-events: none;
             z-index: 999;
             opacity: .05;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")
         }
 
         #bgCanvas {
@@ -74,7 +71,7 @@
                 radial-gradient(ellipse 60% 50% at 12% 18%, rgba(61, 220, 151, .10), transparent 60%),
                 radial-gradient(ellipse 55% 55% at 88% 12%, rgba(94, 176, 255, .12), transparent 62%),
                 radial-gradient(ellipse 70% 60% at 70% 95%, rgba(255, 107, 107, .09), transparent 60%),
-                linear-gradient(180deg, #060910 0%, #081021 55%, #05080f 100%);
+                linear-gradient(180deg, #060910 0%, #081021 55%, #05080f 100%)
         }
 
         .wrap {
@@ -85,7 +82,6 @@
             height: 100vh
         }
 
-        /* ---------- barra superior ---------- */
         .topbar {
             display: flex;
             align-items: center;
@@ -94,7 +90,7 @@
             padding: 0 20px;
             border-bottom: 1px solid var(--line);
             background: rgba(10, 16, 32, .82);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px)
         }
 
         .brand {
@@ -145,7 +141,31 @@
             color: var(--accent)
         }
 
-        /* ---------- rejilla principal ---------- */
+        .voice-btn {
+            font-family: var(--disp);
+            font-size: 10px;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+            padding: 7px 13px;
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            background: none;
+            color: var(--accent);
+            cursor: pointer;
+            transition: all .25s ease
+        }
+
+        .voice-btn:hover {
+            background: var(--accent);
+            color: #04121a;
+            letter-spacing: .22em
+        }
+
+        .voice-btn.on {
+            background: var(--accent);
+            color: #04121a
+        }
+
         .main {
             flex: 1;
             display: grid;
@@ -169,7 +189,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            min-height: 0;
+            min-height: 0
         }
 
         .panel-head {
@@ -182,7 +202,7 @@
             font-size: 11px;
             letter-spacing: .22em;
             text-transform: uppercase;
-            color: var(--muted);
+            color: var(--muted)
         }
 
         .panel-head::before {
@@ -208,7 +228,6 @@
             border-radius: 4px
         }
 
-        /* ---------- agentes ---------- */
         .agents {
             display: flex;
             flex-direction: column;
@@ -218,109 +237,127 @@
         .agent-card {
             position: relative;
             border: 1px solid var(--line);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 13px;
+            padding: 13px;
             display: grid;
-            grid-template-columns: 84px 1fr;
-            gap: 12px;
+            grid-template-columns: 96px 1fr;
+            gap: 13px;
             align-items: center;
             cursor: pointer;
-            background: rgba(14, 23, 40, .7);
-            transition: border-color .3s ease, transform .3s ease, box-shadow .3s ease;
-            overflow: hidden;
-        }
-
-        .agent-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            opacity: .14;
-            background: radial-gradient(circle at 12% 20%, var(--c), transparent 62%);
+            background: rgba(14, 23, 40, .72);
+            transition: all .35s ease;
+            overflow: hidden
         }
 
         .agent-card:hover {
             transform: translateY(-3px);
             border-color: var(--c);
-            box-shadow: 0 14px 34px -18px var(--c)
+            box-shadow: 0 16px 36px -18px var(--c)
         }
 
         .agent-card.active {
             border-color: var(--c);
-            box-shadow: 0 0 0 1px var(--c), 0 18px 40px -20px var(--c)
+            box-shadow: 0 0 0 1px var(--c), 0 18px 42px -20px var(--c)
         }
 
-        .avatar {
-            width: 84px;
-            height: 84px;
-            border-radius: 10px;
-            overflow: hidden;
+        .agent-card.dim {
+            opacity: .55;
+            filter: saturate(.7)
+        }
+
+        .portrait {
             position: relative;
+            width: 96px;
+            height: 96px;
+            border-radius: 13px;
+            overflow: hidden;
+            border: 2px solid var(--c);
             background: linear-gradient(165deg, #16243c, #0c1526);
-            animation: float 7s ease-in-out infinite;
+            animation: breathe 6.5s ease-in-out infinite
         }
 
-        .avatar svg {
+        .portrait img,
+        .portrait svg {
             width: 100%;
             height: 100%;
-            display: block
+            object-fit: cover;
+            display: block;
+            transition: transform .5s ease
         }
 
-        @keyframes float {
+        @keyframes breathe {
 
             0%,
             100% {
-                transform: translateY(0)
+                transform: translateY(0) scale(1)
             }
 
             50% {
-                transform: translateY(-6px)
+                transform: translateY(-4px) scale(1.015)
             }
         }
 
-        .eyes {
-            transform-origin: center 58%;
-            animation: blink 6.2s infinite
+        .portrait .glow {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: 11px;
+            box-shadow: inset 0 0 26px -6px var(--c);
+            opacity: .5;
+            transition: opacity .3s ease
         }
 
-        @keyframes blink {
+        .portrait .sheen {
+            position: absolute;
+            top: -60%;
+            left: -30%;
+            width: 60%;
+            height: 220%;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .16), transparent);
+            transform: rotate(18deg);
+            animation: sheenMove 7s ease-in-out infinite
+        }
+
+        @keyframes sheenMove {
 
             0%,
-            92%,
+            55% {
+                left: -40%
+            }
+
             100% {
-                transform: scaleY(1)
-            }
-
-            95% {
-                transform: scaleY(.08)
+                left: 130%
             }
         }
 
-        .mouth {
-            transform-origin: center;
-            transition: transform .18s ease
+        .speaking .portrait {
+            animation: breathe 2.2s ease-in-out infinite;
+            box-shadow: 0 0 30px -4px var(--c)
         }
 
-        .speaking .mouth {
-            animation: talk .32s ease-in-out infinite alternate
+        .speaking .portrait img,
+        .speaking .portrait svg {
+            transform: scale(1.06)
         }
 
-        @keyframes talk {
+        .speaking .portrait .glow {
+            opacity: 1;
+            animation: glowPulse 1.1s ease-in-out infinite alternate
+        }
+
+        @keyframes glowPulse {
             from {
-                transform: scaleY(.55)
+                box-shadow: inset 0 0 22px -6px var(--c)
             }
 
             to {
-                transform: scaleY(1.45)
+                box-shadow: inset 0 0 34px -2px var(--c)
             }
-        }
-
-        .speaking .avatar {
-            animation: float 2.4s ease-in-out infinite
         }
 
         .agent-name {
             font-family: var(--disp);
-            font-size: 14.5px;
+            font-size: 15.5px;
             font-weight: 600;
             letter-spacing: .05em
         }
@@ -393,7 +430,6 @@
             }
         }
 
-        /* ---------- chat ---------- */
         .chat-panel {
             flex: 1
         }
@@ -518,7 +554,6 @@
             transform: translateY(-2px)
         }
 
-        /* ---------- registro y paneles ---------- */
         #log {
             display: flex;
             flex-direction: column;
@@ -581,7 +616,8 @@
         .bar i {
             display: block;
             height: 100%;
-            background: linear-gradient(90deg, var(--accent), var(--sylph))
+            background: linear-gradient(90deg, var(--accent), var(--sylph));
+            transition: width .5s ease
         }
 
         .metric {
@@ -598,46 +634,122 @@
             letter-spacing: .1em
         }
 
-        .ticker {
-            height: 30px;
-            border-top: 1px solid var(--line);
+        .factory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 14px
+        }
+
+        .tpl {
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 10px;
+            cursor: pointer;
+            background: rgba(14, 23, 40, .7);
+            transition: all .25s ease
+        }
+
+        .tpl:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px)
+        }
+
+        .tpl h4 {
+            font-family: var(--disp);
+            font-size: 11px;
+            letter-spacing: .12em;
+            margin-bottom: 5px;
+            color: var(--accent)
+        }
+
+        .tpl p {
+            font-size: 9.5px;
+            color: var(--muted);
+            line-height: 1.55
+        }
+
+        .proj-row {
             display: flex;
             align-items: center;
+            gap: 8px;
+            padding: 8px 9px;
+            border-radius: 8px;
+            border: 1px solid var(--line);
+            margin-bottom: 7px;
+            background: rgba(12, 21, 38, .6);
+            font-size: 10.5px
+        }
+
+        .proj-row .nm {
+            flex: 1;
             overflow: hidden;
-            background: rgba(8, 14, 26, .85);
-            font-size: 10px;
-            letter-spacing: .22em;
+            text-overflow: ellipsis;
+            white-space: nowrap
+        }
+
+        .proj-row .st {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #3a4a63
+        }
+
+        .proj-row .st.run {
+            background: var(--sylph);
+            box-shadow: 0 0 8px var(--sylph)
+        }
+
+        .mini-btn {
+            font-family: var(--disp);
+            font-size: 8.5px;
+            letter-spacing: .12em;
             text-transform: uppercase;
-            color: #4c5f7c
-        }
-
-        .ticker div {
-            display: flex;
-            gap: 52px;
-            white-space: nowrap;
-            animation: slide 38s linear infinite;
-            padding-left: 100%
-        }
-
-        @keyframes slide {
-            to {
-                transform: translateX(-100%)
-            }
-        }
-
-        .badge {
-            font-size: 9px;
-            padding: 3px 8px;
+            padding: 5px 8px;
             border-radius: 6px;
+            border: 1px solid var(--line);
+            background: none;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all .22s ease
+        }
+
+        .mini-btn:hover {
+            color: var(--accent);
+            border-color: var(--accent)
+        }
+
+        .task-row {
+            border: 1px solid var(--line);
+            border-radius: 9px;
+            padding: 9px 11px;
+            margin-bottom: 8px;
+            background: rgba(12, 21, 38, .6)
+        }
+
+        .task-row .tt {
+            font-size: 11px;
+            margin-bottom: 5px
+        }
+
+        .task-row .ts {
+            font-size: 9px;
             letter-spacing: .14em;
             text-transform: uppercase;
-            border: 1px solid var(--line);
             color: var(--muted)
         }
 
-        .badge.on {
-            color: var(--sylph);
-            border-color: var(--sylph)
+        .task-row .ts.done {
+            color: var(--sylph)
+        }
+
+        .task-row .ts.error {
+            color: var(--eris)
+        }
+
+        .task-row .ts.running,
+        .task-row .ts.retrying {
+            color: var(--warn)
         }
 
         @media (max-width:1180px) {
@@ -646,6 +758,50 @@
                 overflow: auto
             }
         }
+
+        /* TRIAD_CHARACTER_IDLE_V1 */
+        #agents .portrait {
+            overflow: hidden;
+        }
+
+        #agents .portrait img {
+            object-fit: contain;
+            transform-origin: 50% 85%;
+            animation: triad-idle-eris 3.2s ease-in-out infinite;
+            will-change: transform;
+        }
+
+        #img-roxy {
+            animation-delay: -1.1s !important;
+        }
+
+        #img-sylphiette {
+            animation-delay: -2.2s !important;
+        }
+
+        @keyframes triad-idle-eris {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            30% {
+                transform: translateY(-4px) rotate(-0.6deg);
+            }
+
+            65% {
+                transform: translateY(1px) rotate(0.5deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #agents .portrait img {
+                animation: none !important;
+            }
+        }
+
+        /* FIN TRIAD_CHARACTER_IDLE_V1 */
     </style>
 </head>
 
@@ -655,146 +811,64 @@
 
     <div class="wrap">
         <div class="topbar">
-            <div class="brand">TRIAD<span>·</span>STUDIO</div>
+            <div class="brand">TRIAD<span>Â·</span>STUDIO</div>
             <div class="top-stats">
                 <div><span class="dot" id="engineDot"></span>Motor <b id="engineState">comprobando</b></div>
                 <div>Memoria <b id="memCount">0</b></div>
-                <div>Herramientas <b id="toolCount">0</b></div>
-                <div>Puntuación media <b id="avgScore">0.0</b></div>
+                <div>Tareas <b id="taskCount">0</b></div>
+                <div>Calidad media <b id="avgScore">0.0</b></div>
             </div>
+            <button class="voice-btn" id="voiceBtn">Activar voz</button>
             <div class="clock" id="clock">00:00:00</div>
         </div>
 
         <div class="main">
-            <!-- columna izquierda: agentes -->
             <div class="col">
                 <div class="panel" style="flex:1">
-                    <div class="panel-head">Equipo de programación</div>
+                    <div class="panel-head">Equipo de programaciÃ³n</div>
                     <div class="panel-body">
                         <div class="agents" id="agents">
 
                             <div class="agent-card" data-name="Sylphiette" style="--c:#3ddc97">
-                                <div class="avatar">
-                                    <svg viewBox="0 0 100 100">
-                                        <defs>
-                                            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#7ef0c0" />
-                                                <stop offset="1" stop-color="#2fae83" />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect width="100" height="100" fill="#0d1a2c" />
-                                        <ellipse cx="50" cy="42" rx="26" ry="29" fill="#ffe0cf" />
-                                        <path d="M22 44 C20 14 80 12 78 46 C74 32 62 24 50 24 C36 24 26 32 22 44Z"
-                                            fill="url(#g1)" />
-                                        <path d="M22 44 C16 58 18 76 24 82 C22 66 24 54 27 47Z" fill="url(#g1)" />
-                                        <path d="M78 44 C84 58 82 76 76 82 C78 66 76 54 73 47Z" fill="url(#g1)" />
-                                        <g class="eyes">
-                                            <ellipse cx="39" cy="47" rx="5.4" ry="6.6" fill="#12233d" />
-                                            <ellipse cx="61" cy="47" rx="5.4" ry="6.6" fill="#12233d" />
-                                            <ellipse cx="39" cy="47" rx="3.1" ry="3.9" fill="#2fae83" />
-                                            <ellipse cx="61" cy="47" rx="3.1" ry="3.9" fill="#2fae83" />
-                                            <circle cx="37.4" cy="44.6" r="1.5" fill="#fff" />
-                                            <circle cx="59.4" cy="44.6" r="1.5" fill="#fff" />
-                                        </g>
-                                        <ellipse cx="31" cy="55" rx="4.6" ry="2.3" fill="#ff9d9d" opacity=".38" />
-                                        <ellipse cx="69" cy="55" rx="4.6" ry="2.3" fill="#ff9d9d" opacity=".38" />
-                                        <g class="mouth">
-                                            <ellipse cx="50" cy="60" rx="3" ry="1.9" fill="#c2585c" />
-                                        </g>
-                                        <path d="M30 84 C36 74 64 74 70 84 L70 100 L30 100Z" fill="#1c3a52" />
-                                        <rect x="46" y="76" width="8" height="12" fill="#ffe0cf" />
-                                    </svg>
+                                <div class="portrait">
+                                    <img id="img-sylphiette" src="/assets/characters/sylphiette.png" alt="Sylphiette">
+                                    <div class="glow"></div>
+                                    <div class="sheen"></div>
                                 </div>
                                 <div>
                                     <div class="agent-name">Sylphiette</div>
-                                    <div class="agent-role">Interfaz y documentación</div>
-                                    <div class="agent-spec">Frontend · UI/UX · Informes</div>
+                                    <div class="agent-role">Interfaz y documentaciÃ³n</div>
+                                    <div class="agent-spec">Frontend Â· UI/UX Â· Informes</div>
                                     <div class="agent-state">En espera</div>
                                     <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
                                 </div>
                             </div>
 
                             <div class="agent-card" data-name="Roxy" style="--c:#5eb0ff">
-                                <div class="avatar">
-                                    <svg viewBox="0 0 100 100">
-                                        <defs>
-                                            <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#9ccfff" />
-                                                <stop offset="1" stop-color="#3d67c9" />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect width="100" height="100" fill="#0c1730" />
-                                        <ellipse cx="50" cy="43" rx="25" ry="28" fill="#ffe6d6" />
-                                        <path d="M20 48 C16 12 84 12 80 48 C78 26 66 18 50 18 C34 18 22 26 20 48Z"
-                                            fill="url(#g2)" />
-                                        <path d="M20 48 C12 70 16 92 22 96 C18 78 20 60 25 50Z" fill="url(#g2)" />
-                                        <path d="M80 48 C88 70 84 92 78 96 C82 78 80 60 75 50Z" fill="url(#g2)" />
-                                        <path d="M42 16 L50 6 L58 16 Z" fill="url(#g2)" />
-                                        <g class="eyes">
-                                            <ellipse cx="39" cy="48" rx="5.2" ry="6.4" fill="#101f38" />
-                                            <ellipse cx="61" cy="48" rx="5.2" ry="6.4" fill="#101f38" />
-                                            <ellipse cx="39" cy="48" rx="3" ry="3.8" fill="#3d67c9" />
-                                            <ellipse cx="61" cy="48" rx="3" ry="3.8" fill="#3d67c9" />
-                                            <circle cx="37.5" cy="45.6" r="1.4" fill="#fff" />
-                                            <circle cx="59.5" cy="45.6" r="1.4" fill="#fff" />
-                                        </g>
-                                        <ellipse cx="31" cy="56" rx="4.4" ry="2.1" fill="#ff9d9d" opacity=".34" />
-                                        <ellipse cx="69" cy="56" rx="4.4" ry="2.1" fill="#ff9d9d" opacity=".34" />
-                                        <g class="mouth">
-                                            <ellipse cx="50" cy="61" rx="2.8" ry="1.8" fill="#c2585c" />
-                                        </g>
-                                        <path d="M28 86 C36 75 64 75 72 86 L72 100 L28 100Z" fill="#22315e" />
-                                        <rect x="46" y="77" width="8" height="11" fill="#ffe6d6" />
-                                        <circle cx="50" cy="30" r="3" fill="#ffd76a" />
-                                    </svg>
+                                <div class="portrait">
+                                    <img id="img-roxy" src="/assets/characters/roxy.png" alt="Roxy">
+                                    <div class="glow"></div>
+                                    <div class="sheen"></div>
                                 </div>
                                 <div>
                                     <div class="agent-name">Roxy</div>
                                     <div class="agent-role">Arquitecta backend y datos</div>
-                                    <div class="agent-spec">APIs · IA · Bases de datos</div>
+                                    <div class="agent-spec">APIs Â· IA Â· Bases de datos</div>
                                     <div class="agent-state">En espera</div>
                                     <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
                                 </div>
                             </div>
 
                             <div class="agent-card" data-name="Eris" style="--c:#ff6b6b">
-                                <div class="avatar">
-                                    <svg viewBox="0 0 100 100">
-                                        <defs>
-                                            <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
-                                                <stop offset="0" stop-color="#ff9d7a" />
-                                                <stop offset="1" stop-color="#c93f3f" />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect width="100" height="100" fill="#22101c" />
-                                        <ellipse cx="50" cy="43" rx="25.5" ry="28" fill="#ffe2cd" />
-                                        <path d="M18 52 C14 10 86 10 82 52 C78 28 66 18 50 18 C34 18 22 28 18 52Z"
-                                            fill="url(#g3)" />
-                                        <path d="M18 52 C8 72 14 96 22 98 C16 80 18 62 26 52Z" fill="url(#g3)" />
-                                        <path d="M82 52 C92 72 86 96 78 98 C84 80 82 62 74 52Z" fill="url(#g3)" />
-                                        <path d="M30 30 C36 22 46 18 52 20" stroke="#ff9d7a" stroke-width="3"
-                                            fill="none" />
-                                        <g class="eyes">
-                                            <ellipse cx="39" cy="48" rx="5.6" ry="6.8" fill="#2a121a" />
-                                            <ellipse cx="61" cy="48" rx="5.6" ry="6.8" fill="#2a121a" />
-                                            <ellipse cx="39" cy="48" rx="3.2" ry="4" fill="#c93f3f" />
-                                            <ellipse cx="61" cy="48" rx="3.2" ry="4" fill="#c93f3f" />
-                                            <circle cx="37.3" cy="45.4" r="1.5" fill="#fff" />
-                                            <circle cx="59.3" cy="45.4" r="1.5" fill="#fff" />
-                                        </g>
-                                        <ellipse cx="31" cy="56" rx="4.8" ry="2.4" fill="#ff8f8f" opacity=".42" />
-                                        <ellipse cx="69" cy="56" rx="4.8" ry="2.4" fill="#ff8f8f" opacity=".42" />
-                                        <g class="mouth">
-                                            <ellipse cx="50" cy="61" rx="3.2" ry="2" fill="#b8444c" />
-                                        </g>
-                                        <path d="M27 86 C36 74 64 74 73 86 L73 100 L27 100Z" fill="#5c1f26" />
-                                        <rect x="46" y="77" width="8" height="11" fill="#ffe2cd" />
-                                    </svg>
+                                <div class="portrait">
+                                    <img id="img-eris" src="/assets/characters/eris.png" alt="Eris">
+                                    <div class="glow"></div>
+                                    <div class="sheen"></div>
                                 </div>
                                 <div>
                                     <div class="agent-name">Eris</div>
-                                    <div class="agent-role">Sistemas y automatización</div>
-                                    <div class="agent-spec">DevOps · Juegos · Pruebas</div>
+                                    <div class="agent-role">Sistemas y automatizaciÃ³n</div>
+                                    <div class="agent-spec">DevOps Â· Juegos Â· Pruebas</div>
                                     <div class="agent-state">En espera</div>
                                     <div class="voice-bars"><i></i><i></i><i></i><i></i></div>
                                 </div>
@@ -805,16 +879,15 @@
                 </div>
             </div>
 
-            <!-- columna central: conversación -->
             <div class="col">
                 <div class="panel chat-panel">
                     <div class="panel-head">Canal de operaciones</div>
                     <div class="panel-body" id="chatScroll" style="flex:1">
                         <div id="chat">
                             <div class="msg agent" style="--c:#22d3ee">
-                                <div class="who">Director · Sistema</div>
-                                Sistema TRIAD iniciado. Las tres programadoras están conectadas a memoria
-                                permanente. Escribe tu objetivo y lo ejecutaré con el equipo.
+                                <div class="who">Director Â· Sistema</div>
+                                Sistema TRIAD Fase 3 iniciado. Sylphiette, Roxy y Eris conectadas a memoria
+                                permanente, cola de tareas, fÃ¡brica de agentes y voz neuronal. Escribe tu objetivo.
                             </div>
                         </div>
                     </div>
@@ -822,55 +895,58 @@
                         <div class="chip" data-q="Crea una landing page profesional para una empresa de software">
                             Landing profesional</div>
                         <div class="chip"
-                            data-q="Genera un informe universitario sobre inteligencia artificial aplicada a la educación">
+                            data-q="Genera un informe universitario sobre inteligencia artificial aplicada a la educaciÃ³n">
                             Informe universitario</div>
                         <div class="chip"
-                            data-q="Crea un bot de automatización en Python que organice archivos y genere reportes">Bot
-                            automatizador</div>
+                            data-q="Lanza una tarea en segundo plano que cree un bot de automatizaciÃ³n, lo pruebe y genere su informe de calidad">
+                            Tarea larga en cola</div>
                         <div class="chip"
-                            data-q="Diseña la arquitectura de una plataforma SaaS con base de datos, autenticación y pagos">
-                            Plataforma SaaS</div>
-                        <div class="chip" data-q="Crea un prototipo de juego 2D con inventario, misiones y enemigos">
-                            Prototipo de juego</div>
+                            data-q="Crea un agente especializado en traducciÃ³n y localizaciÃ³n de interfaces llamado Lingua">
+                            Nuevo agente</div>
+                        <div class="chip"
+                            data-q="Ejecuta la baterÃ­a de calidad sobre mi proyecto y dime quÃ© corregir">
+                            Evaluar calidad</div>
                     </div>
                     <div class="composer">
                         <textarea id="input"
-                            placeholder="Escribe el objetivo completo. Sé detallado: el equipo divide, ejecuta y documenta."></textarea>
+                            placeholder="Escribe el objetivo completo. El equipo divide, ejecuta, evalÃºa y documenta."></textarea>
                         <button id="send">Ejecutar</button>
                     </div>
                 </div>
             </div>
 
-            <!-- columna derecha: monitor -->
             <div class="col">
-                <div class="panel" style="flex:1.25">
+                <div class="panel" style="flex:1.1">
                     <div class="panel-head">Actividad en vivo</div>
                     <div class="panel-body">
                         <div id="log"></div>
                     </div>
                 </div>
+
                 <div class="panel" style="flex:1">
-                    <div class="panel-head">Memoria y evolución</div>
+                    <div class="panel-head">Tareas en segundo plano</div>
                     <div class="panel-body">
-                        <div class="metric"><span>Memorias almacenadas</span><span id="mMem">0</span></div>
-                        <div class="metric"><span>Mensajes registrados</span><span id="mMsg">0</span></div>
-                        <div class="metric"><span>Herramientas creadas</span><span id="mTools">0</span></div>
+                        <div id="taskList">
+                            <div class="mini">Sin tareas en cola.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel" style="flex:1">
+                    <div class="panel-head">FÃ¡brica y evoluciÃ³n</div>
+                    <div class="panel-body">
+                        <div class="factory-grid" id="tplGrid"></div>
+                        <div id="projList">
+                            <div class="mini">Cargando proyectos...</div>
+                        </div>
+                        <div class="metric"><span>Memorias</span><span id="mMem">0</span></div>
+                        <div class="metric"><span>Herramientas</span><span id="mTools">0</span></div>
                         <div class="metric"><span>Reglas aprendidas</span><span id="mLearn">0</span></div>
-                        <div class="metric"><span>Evaluaciones</span><span id="mEval">0</span></div>
+                        <div class="metric"><span>Agentes del equipo</span><span id="mAgents">3</span></div>
                         <div class="bar"><i id="evoBar" style="width:20%"></i></div>
                         <div class="mini" id="evoText">Monitorizando la curva de aprendizaje...</div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="ticker">
-            <div id="tickerTrack">
-                <span>TRIAD STUDIO · MEMORIA PERSISTENTE ACTIVA</span>
-                <span>SYLPHIETTE · INTERFAZ Y DOCUMENTACIÓN</span>
-                <span>ROXY MIGURDIA · BACKEND E INTELIGENCIA ARTIFICIAL</span>
-                <span>ERIS BOREAS GREYRAT · SISTEMAS Y AUTOMATIZACIÓN</span>
-                <span>AUTOMEJORA CONTROLADA CON REVERSIÓN AUTOMÁTICA</span>
             </div>
         </div>
     </div>
@@ -878,8 +954,9 @@
     <script>
         const $ = s => document.querySelector(s);
         const chat = $('#chat'), logBox = $('#log');
+        const COLORS = { 'Sylphiette': '#3ddc97', 'Roxy': '#5eb0ff', 'Eris': '#ff6b6b' };
 
-        /* ---------- fondo animado: constelación de datos ---------- */
+        /* ============ FONDO ANIMADO ============ */
         (function () {
             const c = $('#bgCanvas'), ctx = c.getContext('2d');
             let w, h, pts = [];
@@ -901,83 +978,167 @@
                     ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                     ctx.fillStyle = 'rgba(120,190,255,.55)'; ctx.fill();
                 }
-                for (let i = 0; i < pts.length; i++) {
-                    for (let j = i + 1; j < pts.length; j++) {
-                        const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-                        const d = Math.hypot(dx, dy);
-                        if (d < 132) {
-                            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
-                            ctx.strokeStyle = `rgba(90,160,235,${(1 - d / 132) * .18})`;
-                            ctx.lineWidth = .7; ctx.stroke();
-                        }
+                for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+                    const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.hypot(dx, dy);
+                    if (d < 132) {
+                        ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);
+                        ctx.strokeStyle = `rgba(90,160,235,${(1 - d / 132) * .18})`; ctx.lineWidth = .7; ctx.stroke();
                     }
                 }
                 requestAnimationFrame(loop);
             })();
         })();
 
-        /* ---------- reloj ---------- */
-        setInterval(() => {
-            const d = new Date();
-            $('#clock').textContent = d.toLocaleTimeString('es-ES', { hour12: false });
-        }, 1000);
+        /* ============ RESPALDO SI FALTA LA ILUSTRACIÃ“N ============ */
+        const FALLBACK = {
+            'Sylphiette': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0e2430"/>
+    <path d="M16 48 C10 84 22 100 32 100 L34 70 C24 62 20 52 18 44Z" fill="#7de8b8"/>
+    <path d="M84 48 C90 84 78 100 68 100 L66 70 C76 62 80 52 82 44Z" fill="#7de8b8"/>
+    <ellipse cx="50" cy="48" rx="24" ry="27" fill="#ffd9c4"/>
+    <path d="M26 44 C24 18 76 16 74 46 C70 30 60 24 50 24 C38 24 30 32 26 44Z" fill="#7de8b8"/>
+    <ellipse cx="39" cy="50" rx="5" ry="6.4" fill="#2fae83"/>
+    <ellipse cx="61" cy="50" rx="5" ry="6.4" fill="#2fae83"/>
+    <circle cx="37.5" cy="48" r="1.7" fill="#fff"/><circle cx="59.5" cy="48" r="1.7" fill="#fff"/>
+    <ellipse cx="50" cy="63" rx="3" ry="2" fill="#c2585c"/>
+    <path d="M28 88 C36 78 64 78 72 88 L74 100 L26 100Z" fill="#eaf7f0"/>
+    <text x="50" y="20" font-size="7" fill="#b8f5d8" text-anchor="middle" font-family="sans-serif">SYLPHIETTE</text>
+  </svg>`,
+            'Roxy': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#0d1a36"/>
+    <path d="M18 44 C10 64 12 88 18 96 C14 78 16 58 24 46Z" fill="#7fb6f5"/>
+    <path d="M82 44 C90 64 88 88 82 96 C86 78 84 58 76 46Z" fill="#7fb6f5"/>
+    <ellipse cx="50" cy="49" rx="23" ry="26" fill="#ffdcc9"/>
+    <path d="M27 46 C25 20 75 18 73 48 C69 32 60 26 50 26 C40 26 31 34 27 46Z" fill="#7fb6f5"/>
+    <path d="M22 24 C30 6 70 6 78 24 C66 18 34 18 22 24Z" fill="#28406f"/>
+    <path d="M18 24 L82 24 L78 30 L22 30Z" fill="#31528b"/>
+    <ellipse cx="39" cy="51" rx="4.8" ry="6" fill="#3d67c9"/>
+    <ellipse cx="61" cy="51" rx="4.8" ry="6" fill="#3d67c9"/>
+    <circle cx="37.5" cy="49" r="1.6" fill="#fff"/><circle cx="59.5" cy="49" r="1.6" fill="#fff"/>
+    <ellipse cx="50" cy="64" rx="2.8" ry="1.8" fill="#c2585c"/>
+    <path d="M27 89 C36 79 64 79 73 89 L75 100 L25 100Z" fill="#26406e"/>
+    <text x="50" y="98" font-size="7" fill="#bfe0ff" text-anchor="middle" font-family="sans-serif">ROXY</text>
+  </svg>`,
+            'Eris': `<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#2a1220"/>
+    <path d="M12 48 C4 70 12 96 24 98 C14 82 12 62 22 48Z" fill="#f0703f"/>
+    <path d="M88 48 C96 70 88 96 76 98 C86 82 88 62 78 48Z" fill="#f0703f"/>
+    <path d="M14 38 C8 26 22 10 38 8 C28 16 20 26 20 38Z" fill="#f0703f"/>
+    <path d="M86 38 C92 26 78 10 62 8 C72 16 80 26 80 38Z" fill="#f0703f"/>
+    <ellipse cx="50" cy="49" rx="23.5" ry="26" fill="#ffdab9"/>
+    <path d="M26 48 C22 18 78 16 74 48 C72 34 64 24 52 24 C42 24 32 32 26 48Z" fill="#f0703f"/>
+    <ellipse cx="39" cy="51" rx="5" ry="6.3" fill="#d98a2b"/>
+    <ellipse cx="61" cy="51" rx="5" ry="6.3" fill="#d98a2b"/>
+    <circle cx="37.4" cy="48.8" r="1.8" fill="#fff"/><circle cx="59.4" cy="48.8" r="1.8" fill="#fff"/>
+    <ellipse cx="50" cy="64" rx="3.2" ry="2.1" fill="#b8444c"/>
+    <path d="M26 89 C36 78 64 78 74 89 L76 100 L24 100Z" fill="#7c2430"/>
+    <text x="50" y="20" font-size="7" fill="#ffb287" text-anchor="middle" font-family="sans-serif">ERIS</text>
+  </svg>`
+        };
+        const EXT_TRY = ['.jpg', '.jpeg', '.webp', '.gif'];
+        ['sylphiette', 'roxy', 'eris'].forEach(key => {
+            const img = document.getElementById('img-' + key);
+            const name = key.charAt(0).toUpperCase() + key.slice(1);
+            let idx = 0;
+            img.addEventListener('error', () => {
+                if (idx < EXT_TRY.length) {
+                    img.src = '/assets/characters/' + key + EXT_TRY[idx++];
+                    return;
+                }
+                const wrap = img.parentElement;
+                img.remove();
+                wrap.insertAdjacentHTML('afterbegin', FALLBACK[name]);
+            });
+        });
+        /* ============ RELOJ ============ */
+        setInterval(() => { $('#clock').textContent = new Date().toLocaleTimeString('es-ES', { hour12: false }); }, 1000);
 
-        /* ---------- voz ---------- */
-        let voiceOn = true;
-        function speak(text, agent) {
-            if (!voiceOn || !('speechSynthesis' in window)) return;
-            const clean = text.replace(/[#*`>\[\]|]/g, '').slice(0, 420);
-            const u = new SpeechSynthesisUtterance(clean);
-            u.lang = 'es-ES';
-            const cfg = {
-                'Sylphiette': { pitch: 1.3, rate: 1.05 },
-                'Roxy': { pitch: .95, rate: .97 },
-                'Eris': { pitch: 1.12, rate: 1.12 }
-            }[agent] || { pitch: 1, rate: 1 };
-            u.pitch = cfg.pitch; u.rate = cfg.rate;
-            const voices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('es'));
-            if (voices.length) u.voice = voices[Math.floor(Math.random() * voices.length)];
+        /* ============ VOZ NEURONAL (cero robot) ============ */
+        const VOICE_GREET = {
+            'Sylphiette': 'Hola, soy Sylphiette. Interfaz, diseÃ±o y documentaciÃ³n listas para trabajar.',
+            'Roxy': 'Roxy, aquÃ­. Arquitectura, datos e inteligencia artificial en lÃ­nea.',
+            'Eris': 'Â¡Eris lista! Sistemas, automatizaciÃ³n y pruebas. Dime quÃ© ejecutamos.'
+        };
+        let voiceOn = false;
+        async function speak(text, agent) {
+            if (!voiceOn) return;
+            const clean = String(text).replace(/[#*`>\[\]|{}]/g, '').slice(0, 380);
+            if (!clean.trim()) return;
             setSpeaking(agent, true);
-            u.onend = () => setSpeaking(agent, false);
-            speechSynthesis.speak(u);
+            try {
+                const r = await fetch('/api/voice', {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ agent, text: clean })
+                });
+                if (!r.ok) throw new Error('sin voz neuronal');
+                const blob = await r.blob();
+                const url = URL.createObjectURL(blob);
+                const audio = new Audio(url);
+                audio.onended = () => { setSpeaking(agent, false); URL.revokeObjectURL(url); };
+                audio.onerror = () => { setSpeaking(agent, false); URL.revokeObjectURL(url); };
+                await audio.play();
+            } catch (err) {
+                if (!('speechSynthesis' in window)) { setSpeaking(agent, false); return; }
+                const cfg = {
+                    pitch: agent === 'Roxy' ? .9 : agent === 'Eris' ? 1.15 : 1.3,
+                    rate: agent === 'Roxy' ? .92 : agent === 'Eris' ? 1.15 : 1.0
+                };
+                const u = new SpeechSynthesisUtterance(clean);
+                u.lang = 'es-ES'; u.pitch = cfg.pitch; u.rate = cfg.rate;
+                u.onend = () => setSpeaking(agent, false);
+                u.onerror = () => setSpeaking(agent, false);
+                speechSynthesis.speak(u);
+            }
         }
         function setSpeaking(name, on) {
             document.querySelectorAll('.agent-card').forEach(card => {
-                if (card.dataset.name === name) card.classList.toggle('speaking', on);
+                const isHer = card.dataset.name === name;
+                card.classList.toggle('speaking', on && isHer);
+                card.classList.toggle('dim', on && !isHer);
+                if (!on) card.classList.remove('dim');
             });
         }
+        $('#voiceBtn').addEventListener('click', async () => {
+            voiceOn = !voiceOn;
+            $('#voiceBtn').classList.toggle('on', voiceOn);
+            $('#voiceBtn').textContent = voiceOn ? 'Voz activada' : 'Activar voz';
+            if (voiceOn) {
+                addLog('tool', 'Director', 'generando voces neuronales de los tres personajes');
+                await speak(VOICE_GREET['Sylphiette'], 'Sylphiette');
+                await speak(VOICE_GREET['Roxy'], 'Roxy');
+                await speak(VOICE_GREET['Eris'], 'Eris');
+                addLog('plan', 'Director', 'voces neuronales activas: Sylphiette (dulce), Roxy (serena), Eris (enÃ©rgica)');
+            }
+        });
 
-        /* ---------- registro de actividad ---------- */
+        /* ============ REGISTRO ============ */
         function addLog(type, agent, text) {
             const el = document.createElement('div');
             el.className = 'log-line ' + type;
-            const t = new Date().toLocaleTimeString('es-ES', { hour12: false });
-            el.innerHTML = `<div class="t">${t}</div><div><b style="color:#8fb6e0">${agent}</b> · ${text}</div>`;
+            el.innerHTML = `<div class="t">${new Date().toLocaleTimeString('es-ES', { hour12: false })}</div>` +
+                `<div><b style="color:#8fb6e0">${agent}</b> Â· ${text}</div>`;
             logBox.prepend(el);
             while (logBox.children.length > 60) logBox.lastChild.remove();
         }
 
-        /* ---------- conversación ---------- */
+        /* ============ CONVERSACIÃ“N ============ */
+        function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])); }
         function addMsg(who, text, color, speakIt) {
             const el = document.createElement('div');
-            el.className = 'msg ' + (who === 'Tú' ? 'user' : 'agent');
+            el.className = 'msg ' + (who === 'TÃº' ? 'user' : 'agent');
             el.style.setProperty('--c', color || '#22d3ee');
             el.innerHTML = `<div class="who">${who}</div>${escapeHtml(text)}`;
             chat.appendChild(el);
             $('#chatScroll').scrollTop = $('#chatScroll').scrollHeight;
-            if (speakIt) speak(text, who.split(' ·')[0]);
+            if (speakIt) speak(text, who.split(' Â·')[0]);
         }
-        function escapeHtml(s) {
-            return s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
-        }
-
         async function send() {
             const input = $('#input');
             const text = input.value.trim();
             if (!text) return;
             input.value = '';
-            addMsg('Tú', text, '#22d3ee', false);
-            addLog('plan', 'Director', 'nueva directiva recibida, repartiendo al equipo');
+            addMsg('TÃº', text, '#22d3ee', false);
+            addLog('plan', 'Director', 'nueva directiva recibida');
             $('#send').disabled = true;
             try {
                 const r = await fetch('/api/chat', {
@@ -987,22 +1148,18 @@
                 const data = await r.json();
                 if (data.results && data.results.length === 1) {
                     const res = data.results[0];
-                    addMsg(res.agent, res.reply, colorOf(res.agent), true);
+                    addMsg(res.agent, res.reply, COLORS[res.agent] || '#22d3ee', true);
                 } else {
-                    addMsg('Director · Sistema', data.reply || 'Proceso completado.', '#22d3ee', true);
+                    addMsg('Director Â· Sistema', data.reply || 'Proceso completado.', '#22d3ee', true);
                 }
-                refreshState();
+                refreshState(); loadTasks();
             } catch (err) {
-                addLog('error', 'Sistema', 'fallo de conexión: ' + err.message);
+                addLog('error', 'Sistema', 'fallo de conexiÃ³n: ' + err.message);
             } finally {
                 $('#send').disabled = false;
                 input.focus();
             }
         }
-        function colorOf(name) {
-            return { 'Sylphiette': '#3ddc97', 'Roxy Migurdia': '#5eb0ff', 'Eris': '#ff6b6b' }[name] || '#22d3ee';
-        }
-
         $('#send').addEventListener('click', send);
         $('#input').addEventListener('keydown', e => {
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
@@ -1015,11 +1172,119 @@
                 document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
                 card.classList.add('active');
                 $('#input').placeholder = 'Encargando directamente a ' + card.dataset.name + '...';
-                $('#input').dataset.agent = card.dataset.name;
+                if (voiceOn && VOICE_GREET[card.dataset.name]) speak(VOICE_GREET[card.dataset.name], card.dataset.name);
             });
         });
 
-        /* ---------- WebSocket en vivo ---------- */
+        /* ============ TAREAS EN SEGUNDO PLANO ============ */
+        async function loadTasks() {
+            try {
+                const r = await fetch('/api/tasks');
+                const d = await r.json();
+                const box = $('#taskList');
+                const tasks = d.tasks || [];
+                $('#taskCount').textContent = tasks.filter(t => ['running', 'pending', 'retrying'].includes(t.status)).length;
+                box.innerHTML = tasks.length ? tasks.map(t => `
+      <div class="task-row">
+        <div class="tt">${escapeHtml(t.title).slice(0, 70)}</div>
+        <div class="ts ${t.status}">${t.agent} Â· ${t.status} Â· ${t.progress}%</div>
+        <div class="bar"><i style="width:${t.progress}%"></i></div>
+        ${['running', 'pending', 'retrying'].includes(t.status) ?
+                        `<button class="mini-btn" onclick="cancelTask('${t.id}')">Cancelar</button>` : ''}
+      </div>`).join('') : '<div class="mini">Sin tareas en cola.</div>';
+            } catch (err) { }
+        }
+        window.cancelTask = async function (id) {
+            await fetch('/api/tasks/' + id + '/cancel', { method: 'POST' });
+            addLog('tool', 'Eris', 'tarea cancelada: ' + id);
+            loadTasks();
+        };
+        setInterval(loadTasks, 4000);
+        loadTasks();
+
+        /* ============ FÃBRICA DE APLICACIONES ============ */
+        async function loadFactory() {
+            try {
+                const [tRes, pRes] = await Promise.all([fetch('/api/templates'), fetch('/api/projects')]);
+                const tData = await tRes.json(), pData = await pRes.json();
+                const grid = document.getElementById('tplGrid');
+                if (grid) grid.innerHTML = (tData.templates || []).map(t => `
+      <div class="tpl" onclick="faCreate('${t.id}')">
+        <h4>${t.title}</h4>
+        <p>${t.description}</p>
+        <p style="margin-top:6px;color:${t.installed ? 'var(--sylph)' : 'var(--eris)'}">
+          ${t.installed ? 'Instalada' : 'Falta crear sus archivos'}</p>
+      </div>`).join('');
+                const list = document.getElementById('projList');
+                if (list) {
+                    const projects = pData.projects || [];
+                    list.innerHTML = projects.length ? projects.map(p => `
+        <div class="proj-row">
+          <div class="st ${p.status === 'running' ? 'run' : ''}"></div>
+          <div class="nm"><b>${p.name}</b> Â· ${p.template}</div>
+          <button class="mini-btn" onclick="faStart('${p.slug}')">Iniciar</button>
+          <button class="mini-btn" onclick="faStop('${p.slug}')">Parar</button>
+          <button class="mini-btn" onclick="faQuality('${p.slug}')">Calidad</button>
+          <button class="mini-btn" onclick="faExport('${p.slug}')">ZIP</button>
+        </div>`).join('') : '<div class="mini">Sin proyectos todavÃ­a.</div>';
+                }
+            } catch (err) { }
+        }
+        window.faCreate = async function (template) {
+            const name = prompt('Nombre del proyecto:', 'Mi Proyecto');
+            if (!name) return;
+            addLog('plan', 'Director', `Creando proyecto "${name}" desde ${template}`);
+            const r = await fetch('/api/projects/create', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ template, name, vars: {} })
+            });
+            const data = await r.json();
+            if (data.ok) {
+                addMsg('FÃ¡brica Â· Sistema', `Proyecto "${data.project.name}" creado con ${data.project.files} archivos.\n${data.project.path}`, '#4ade80', true);
+            } else { addLog('error', 'FÃ¡brica', data.error); }
+            loadFactory();
+        };
+        window.faStart = async function (slug) {
+            const r = await fetch('/api/projects/start', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ project: slug, command: 'serve' })
+            });
+            const d = await r.json();
+            addLog(d.ok ? 'tool' : 'error', 'Eris', d.ok ? `Proyecto ${slug} en ejecuciÃ³n Â· pid ${d.result.pid}` : d.error);
+            setTimeout(loadFactory, 900);
+        };
+        window.faStop = async function (slug) {
+            await fetch('/api/projects/stop', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ project: slug })
+            });
+            addLog('tool', 'Eris', `Proyecto ${slug} detenido`);
+            setTimeout(loadFactory, 600);
+        };
+        window.faExport = async function (slug) {
+            const r = await fetch('/api/projects/export?project=' + encodeURIComponent(slug));
+            const d = await r.json();
+            if (d.ok) { addMsg('FÃ¡brica Â· Sistema', 'Exportado en:\n' + d.zip, '#4ade80', true); }
+            else { addLog('error', 'FÃ¡brica', d.error); }
+        };
+        window.faQuality = async function (slug) {
+            addLog('tool', 'Eris', `ejecutando baterÃ­a de calidad sobre ${slug}`);
+            const r = await fetch('/api/quality/run', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ project: slug })
+            });
+            const d = await r.json();
+            if (d.error) { addLog('error', 'Calidad', d.error); return; }
+            const failing = (d.checks || []).filter(c => !c.ok).map(c => c.check).join(', ') || 'ninguno';
+            addMsg('Control de calidad',
+                `Proyecto: ${d.project}\nPuntuaciÃ³n: ${d.score} (${d.passed}/${d.total} comprobaciones)\nPuntos a corregir: ${failing}\n${d.feedback}`,
+                '#f5c451', true);
+            refreshState();
+        };
+        setInterval(loadFactory, 9000);
+        loadFactory();
+
+        /* ============ WEBSOCKET ============ */
         function connectWS() {
             const proto = location.protocol === 'https:' ? 'wss' : 'ws';
             const ws = new WebSocket(`${proto}://${location.host}/ws`);
@@ -1031,13 +1296,13 @@
                         .find(c => c.dataset.name === e.agent);
                     if (card) card.querySelector('.agent-state').textContent = e.text.slice(0, 64);
                 }
-                if (e.type === 'score') refreshState();
+                if (e.type === 'score') { refreshState(); loadTasks(); }
             };
             ws.onclose = () => setTimeout(connectWS, 2500);
         }
         connectWS();
 
-        /* ---------- estado del sistema ---------- */
+        /* ============ ESTADO ============ */
         async function refreshState() {
             try {
                 const r = await fetch('/api/state');
@@ -1045,22 +1310,218 @@
                 $('#engineState').textContent = s.engine === 'online' ? 'modelo conectado' : 'modo offline';
                 $('#engineDot').classList.toggle('off', s.engine !== 'online');
                 $('#memCount').textContent = s.stats.memories;
-                $('#toolCount').textContent = s.stats.tools;
-                $('#avgScore').textContent = s.stats.avg_score;
                 $('#mMem').textContent = s.stats.memories;
-                $('#mMsg').textContent = s.stats.messages;
                 $('#mTools').textContent = s.stats.tools;
                 $('#mLearn').textContent = s.stats.learnings;
-                $('#mEval').textContent = s.stats.evaluations;
+                $('#mAgents').textContent = (s.agents || []).length;
+                $('#avgScore').textContent = s.stats.avg_score;
                 const evo = s.evolution || {};
                 $('#evoBar').style.width = Math.max(8, Math.round((evo.average || 0) * 100)) + '%';
-                $('#evoText').textContent =
-                    `Muestras: ${evo.samples || 0} · Media: ${evo.average || 0} · Tendencia: ${evo.trend || 0}`;
-            } catch (err) { /* servidor reiniciando */ }
+                $('#evoText').textContent = 'Muestras: ' + (evo.samples || 0) +
+                    ' | Media: ' + (evo.average || 0) + ' | Tendencia: ' + (evo.trend || 0);
+            } catch (err) { }
         }
         refreshState();
         setInterval(refreshState, 5000);
     </script>
+    <script src="/assets/anim.js"></script>
 </body>
 
 </html>
+/* ================= FASE 2 Â· FÃBRICA DE APLICACIONES ================= */
+(function () {
+const style = document.createElement('style');
+style.textContent = `
+.factory-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}
+.tpl{border:1px solid var(--line);border-radius:9px;padding:10px;cursor:pointer;
+background:rgba(14,23,40,.7);transition:all .25s ease}
+.tpl:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tpl h4{font-family:var(--disp);font-size:11px;letter-spacing:.12em;margin-bottom:5px;color:var(--accent)}
+.tpl p{font-size:9.5px;color:var(--muted);line-height:1.55}
+.proj-row{display:flex;align-items:center;gap:8px;padding:8px 9px;border-radius:8px;
+border:1px solid var(--line);margin-bottom:7px;background:rgba(12,21,38,.6);font-size:10.5px}
+.proj-row .nm{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.proj-row .st{width:8px;height:8px;border-radius:50%;background:#3a4a63}
+.proj-row .st.run{background:var(--sylph);box-shadow:0 0 8px var(--sylph)}
+.mini-btn{font-family:var(--disp);font-size:8.5px;letter-spacing:.12em;text-transform:uppercase;
+padding:5px 8px;border-radius:6px;border:1px solid var(--line);background:none;
+color:var(--muted);cursor:pointer;transition:all .22s ease}
+.mini-btn:hover{color:var(--accent);border-color:var(--accent)}
+`;
+document.head.appendChild(style);
+
+const panel = document.createElement('div');
+panel.className = 'panel';
+panel.style.flex = '1';
+panel.innerHTML = `
+<div class="panel-head">FÃ¡brica de aplicaciones</div>
+<div class="panel-body">
+    <div class="factory-grid" id="tplGrid"></div>
+    <div id="projList">
+        <div class="mini">Cargando proyectos...</div>
+    </div>
+</div>
+`;
+
+const container = document.querySelector('.main .col:last-child');
+if (container) {
+container.appendChild(panel);
+} else {
+console.error('FÃ¡brica: no se encontrÃ³ .main .col:last-child');
+}
+})();
+
+async function loadFactory() {
+try {
+const [tRes, pRes] = await Promise.all([
+fetch('/api/templates'),
+fetch('/api/projects')
+]);
+
+if (!tRes.ok || !pRes.ok) {
+throw new Error('No se pudieron cargar las plantillas o los proyectos');
+}
+
+const tData = await tRes.json();
+const pData = await pRes.json();
+
+const grid = document.getElementById('tplGrid');
+if (grid) {
+grid.innerHTML = (tData.templates || []).map(t => `
+<div class="tpl" onclick="faCreate('${t.id}')">
+    <h4>${t.title}</h4>
+    <p>${t.description}</p>
+    <p style="margin-top: 6px; color: var(--eris);">
+        ${t.installed ? 'Instalada' : 'Falta crear sus archivos'}
+    </p>
+</div>
+`).join('');
+}
+
+const list = document.getElementById('projList');
+if (list) {
+const projects = pData.projects || [];
+
+list.innerHTML = projects.length ? projects.map(p => `
+<div class="proj-row">
+    <div class="st ${p.status === 'running' ? 'run' : ''}"></div>
+    <div class="nm">
+        <b>${p.name}</b> Â· ${p.template} Â· ${p.files} archivos
+    </div>
+    <button class="mini-btn" onclick="faStart('${p.slug}')">Iniciar</button>
+    <button class="mini-btn" onclick="faStop('${p.slug}')">Parar</button>
+    <button class="mini-btn" onclick="faExport('${p.slug}')">ZIP</button>
+</div>
+`).join('') :
+'<div class="mini">TodavÃ­a no hay proyectos. Pulsa una plantilla para crear uno.</div>';
+}
+} catch (err) {
+console.error('Error al cargar la fÃ¡brica:', err);
+}
+}
+
+async function faCreate(template) {
+const name = prompt('Nombre del proyecto:', 'Mi Proyecto');
+if (!name) return;
+
+addLog('plan', 'Director',
+`Creando proyecto "${name}" desde la plantilla ${template}`);
+
+try {
+const r = await fetch('/api/projects/create', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ template, name, vars: {} })
+});
+
+const data = await r.json();
+
+if (data.ok) {
+addMsg('FÃ¡brica Â· Sistema',
+`Proyecto "${data.project.name}" creado con ${data.project.files} archivos.\n` +
+`UbicaciÃ³n: ${data.project.path}\n` +
+`EjecÃºtalo con el botÃ³n "Iniciar" o pide al equipo: "instala y ejecuta ${data.project.slug}"`,
+'#4ade80', true);
+} else {
+addLog('error', 'FÃ¡brica', data.error || 'Error al crear el proyecto');
+}
+
+await loadFactory();
+} catch (err) {
+addLog('error', 'FÃ¡brica', String(err));
+}
+}
+
+async function faStart(slug) {
+try {
+const r = await fetch('/api/projects/start', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ project: slug, command: 'serve' })
+});
+
+const d = await r.json();
+
+addLog(
+d.ok ? 'tool' : 'error',
+'Eris',
+d.ok
+? `Proyecto ${slug} en ejecuciÃ³n Â· pid ${d.result.pid}`
+: (d.error || 'No se pudo iniciar el proyecto')
+);
+
+await loadFactory();
+} catch (err) {
+addLog('error', 'Eris', String(err));
+}
+}
+
+async function faStop(slug) {
+try {
+const r = await fetch('/api/projects/stop', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ project: slug })
+});
+
+const d = await r.json();
+
+if (d.ok) {
+addLog('tool', 'Eris', `Proyecto ${slug} detenido`);
+} else {
+addLog('error', 'Eris', d.error || 'No se pudo detener el proyecto');
+}
+
+await loadFactory();
+} catch (err) {
+addLog('error', 'Eris', String(err));
+}
+}
+
+async function faExport(slug) {
+try {
+const r = await fetch(
+'/api/projects/export?project=' + encodeURIComponent(slug)
+);
+
+const d = await r.json();
+
+if (d.ok) {
+addMsg('FÃ¡brica Â· Sistema',
+'Proyecto exportado correctamente en:\n' + d.zip,
+'#4ade80', true);
+
+addLog('tool', 'Sylphiette',
+`ExportaciÃ³n ZIP de ${slug} completada`);
+} else {
+addLog('error', 'FÃ¡brica',
+d.error || 'Error al exportar el proyecto');
+}
+} catch (err) {
+addLog('error', 'FÃ¡brica', String(err));
+}
+}
+
+loadFactory();
+setInterval(loadFactory, 9000);
+</script>

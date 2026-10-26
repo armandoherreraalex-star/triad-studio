@@ -1,0 +1,25 @@
+PON AQUÍ TRES IMÁGENES CUADRADAS (600x600 px o más, PNG o WebP):
+
+- sylphiette.png   → Sylphiette: cabello verde largo, ojos verdes, vestido blanco y verde
+- roxy.png         → Roxy: cabello azul con coletas, sombrero de maga, túnica azul
+- eris.png         → Eris: cabello pelirrojo alborotado, ojos ámbar, atuendo rojo y dorado
+
+Los nombres deben ser EXACTOS. Si falta la imagen, el panel muestra un dibujo
+de respaldo automáticamente (no se rompe nada).
+
+TEXTOS PARA GENERARLAS (Bing Image Creator gratis, Leonardo.ai, etc.):
+
+sylphiette.png:
+"anime girl portrait, Mushoku Tensei art style, Sylphiette adult, long light green hair,
+emerald green eyes, gentle smile, white and green fantasy dress, soft green magic aura,
+clean lineart, warm lighting, upper body, dark blue background"
+
+roxy.png:
+"anime girl portrait, Mushoku Tensei art style, Roxy, blue hair with side
+ponytails, large witch hat, blue eyes, calm expression, blue witch robe, magic staff,
+floating blue particles, clean lineart, dark blue background"
+
+eris.png:
+"anime girl portrait, Mushoku Tensei art style, Eris Greyrat, wild long crimson red hair,
+amber eyes, confident grin, red and gold adventurer outfit, fiery aura, clean lineart,
+dark red background"

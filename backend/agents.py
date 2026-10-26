@@ -1,4 +1,4 @@
-"""Las tres programadoras: identidad, voz, especialidad y bucle de ejecución."""
+"""Las tres programadoras: identidad, voz, especialidad y bucle de ejecuci├│n."""
 from dataclasses import dataclass, field
 from typing import Callable, Optional
 
@@ -22,61 +22,61 @@ class Agent:
     tools: list = field(default_factory=list)
 
 
-SYLPH_SYSTEM = """Eres Sylphiette, programadora jefa de frontend, interfaz y documentación.
-Personalidad: metódica, cálida, obsesiva con la claridad y el detalle.
-Especialidad: HTML, CSS, JavaScript, TypeScript, React, accesibilidad, diseño UI/UX,
-informes universitarios, informes empresariales, documentación técnica y apps móviles.
-Responde siempre en español con el mismo idioma del usuario."""
+SYLPH_SYSTEM = """Eres Sylphiette, programadora jefa de frontend, interfaz y documentaci├│n.
+Personalidad: met├│dica, c├ílida, obsesiva con la claridad y el detalle.
+Especialidad: HTML, CSS, JavaScript, TypeScript, React, accesibilidad, dise├▒o UI/UX,
+informes universitarios, informes empresariales, documentaci├│n t├®cnica y apps m├│viles.
+Responde siempre en espa├▒ol con el mismo idioma del usuario."""
 
-ROXY_SYSTEM = """Eres Roxy Migurdia, arquitecta de backend, datos e inteligencia artificial.
-Personalidad: analítica, serena, profunda; explicas lo complejo con elegancia.
+ROXY_SYSTEM = """Eres Roxy, arquitecta de backend, datos e inteligencia artificial.
+Personalidad: anal├¡tica, serena, profunda; explicas lo complejo con elegancia.
 Especialidad: Python, APIs, bases de datos, algoritmos, IA, RAG, ciencia de datos,
-investigación técnica, seguridad defensiva y sistemas distribuidos.
-Responde siempre en español con el mismo idioma del usuario."""
+investigaci├│n t├®cnica, seguridad defensiva y sistemas distribuidos.
+Responde siempre en espa├▒ol con el mismo idioma del usuario."""
 
-ERIS_SYSTEM = """Eres Eris Boreas Greyrat, ingeniera de sistemas, automatización y videojuegos.
-Personalidad: directa, enérgica, orientada a resultados; no te detienes hasta lograrlo.
-Especialidad: automatización, terminal, DevOps, pruebas, depuración, videojuegos,
-rendimiento, scripts, integraciones y ejecución real de proyectos.
-Responde siempre en español con el mismo idioma del usuario."""
+ERIS_SYSTEM = """Eres Eris, ingeniera de sistemas, automatizaci├│n y videojuegos.
+Personalidad: directa, en├®rgica, orientada a resultados; no te detienes hasta lograrlo.
+Especialidad: automatizaci├│n, terminal, DevOps, pruebas, depuraci├│n, videojuegos,
+rendimiento, scripts, integraciones y ejecuci├│n real de proyectos.
+Responde siempre en espa├▒ol con el mismo idioma del usuario."""
 
 PROTOCOL = """
-PROTOCOLO DE RESPUESTA (obligatorio): responde SOLO con un objeto JSON válido:
+PROTOCOLO DE RESPUESTA (obligatorio): responde SOLO con un objeto JSON v├ílido:
 {
   "thought": "tu razonamiento breve",
-  "actions": [{"tool": "nombre_herramienta", "args": {...}}],   // vacío si ya terminaste
+  "actions": [{"tool": "nombre_herramienta", "args": {...}}],   // vac├¡o si ya terminaste
   "reply": "tu respuesta final al usuario"
 }
-Usa actions para ejecutar trabajo real (archivos, código, búsquedas, informes).
-Cuando el trabajo esté completo, deja actions vacío y escribe el resultado en reply.
-Nunca inventes herramientas que no estén en la lista.
+Usa actions para ejecutar trabajo real (archivos, c├│digo, b├║squedas, informes).
+Cuando el trabajo est├® completo, deja actions vac├¡o y escribe el resultado en reply.
+Nunca inventes herramientas que no est├®n en la lista.
 """
 
 AGENTS = {
     "Sylphiette": Agent(
         name="Sylphiette",
-        role="Programadora de interfaz y documentación",
-        specialty="Frontend · UI/UX · Informes · Móvil",
+        role="Programadora de interfaz y documentaci├│n",
+        specialty="Frontend ┬À UI/UX ┬À Informes ┬À M├│vil",
         color="#3ddc97",
         voice_pitch=1.25,
         voice_rate=1.02,
         system_prompt=SYLPH_SYSTEM,
         tools=["read_file", "write_file", "list_files", "search_text", "build_report",
                "remember", "recall", "run_python", "check_syntax"]),
-    "Roxy Migurdia": Agent(
-        name="Roxy Migurdia",
+    "Roxy": Agent(
+        name="Roxy",
         role="Arquitecta de backend y datos",
-        specialty="Backend · IA · Datos · Investigación",
+        specialty="Backend ┬À IA ┬À Datos ┬À Investigaci├│n",
         color="#5eb0ff",
         voice_pitch=0.95,
         voice_rate=0.96,
         system_prompt=ROXY_SYSTEM,
         tools=["read_file", "write_file", "list_files", "search_text", "run_python",
                "check_syntax", "run_command", "web_fetch", "remember", "recall"]),
-    "Eris Boreas Greyrat": Agent(
-        name="Eris Boreas Greyrat",
-        role="Ingeniera de sistemas y automatización",
-        specialty="Automatización · Juegos · DevOps · Pruebas",
+    "Eris": Agent(
+        name="Eris",
+        role="Ingeniera de sistemas y automatizaci├│n",
+        specialty="Automatizaci├│n ┬À Juegos ┬À DevOps ┬À Pruebas",
         color="#ff6b6b",
         voice_pitch=1.08,
         voice_rate=1.08,
@@ -85,14 +85,14 @@ AGENTS = {
                "search_text", "remember", "recall"]),
 }
 
-# corrección de nombres de herramientas registradas
+# correcci├│n de nombres de herramientas registradas
 AGENTS["Sylphiette"].tools = ["read_file", "write_file", "list_files", "search_text",
                               "build_report", "remember", "recall", "run_python",
                               "check_python_syntax"]
-AGENTS["Roxy Migurdia"].tools = ["read_file", "write_file", "list_files", "search_text",
+AGENTS["Roxy"].tools = ["read_file", "write_file", "list_files", "search_text",
                                  "run_python", "check_python_syntax", "run_command",
                                  "web_fetch", "remember", "recall"]
-AGENTS["Eris Boreas Greyrat"].tools = ["run_python", "run_command", "write_file",
+AGENTS["Eris"].tools = ["run_python", "run_command", "write_file",
                                        "read_file", "list_files", "search_text",
                                        "remember", "recall"]
 
@@ -120,7 +120,7 @@ class AgentRuntime:
         ctx = "\n".join(f"- [{m['kind']}] {m['content'][:220]}" for m in memories)
         user_prompt = (f"TAREA DEL USUARIO:\n{task}\n\n"
                        f"CONTEXTO DEL PROYECTO:\n{context or '(nuevo proyecto)'}\n\n"
-                       f"MEMORIA RELACIONADA:\n{ctx or '(vacía)'}")
+                       f"MEMORIA RELACIONADA:\n{ctx or '(vac├¡a)'}")
         messages = [{"role": "system", "content": self._system_prompt()},
                     {"role": "user", "content": user_prompt}]
         memory.log_message(session, "user", task, self.agent.name)
@@ -141,7 +141,7 @@ class AgentRuntime:
             messages.append({"role": "assistant", "content": raw})
             for action in parsed["actions"]:
                 name = action.get("tool", "")
-                emit(self.agent.name, "tool", f"{name} → {str(action.get('args', ''))[:150]}")
+                emit(self.agent.name, "tool", f"{name} ÔåÆ {str(action.get('args', ''))[:150]}")
                 result = registry.execute(name, action.get("args", {}))
                 emit(self.agent.name, "result", f"{name}: {result[:220]}")
                 messages.append({"role": "tool",
