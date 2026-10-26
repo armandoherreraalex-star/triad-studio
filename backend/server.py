@@ -1,4 +1,4 @@
-Ôªø
+
 """Servidor FastAPI: panel web, API REST, proyectos, agentes, voz y eventos."""
 
 import asyncio
@@ -72,7 +72,6 @@ async def _safe_send(ws: WebSocket, event: dict) -> None:
 @app.on_event("startup")
 async def _startup() -> None:
     global LOOP
-<<<<<<< HEAD
     LOOP = asyncio.get_event_loop()
     asyncio.create_task(_backup_loop())
 
@@ -85,12 +84,10 @@ async def _backup_loop():
         except Exception:
             import logging
             logging.exception("Error al respaldar en Cloudflare R2")
-=======
     LOOP = asyncio.get_running_loop()
 
 
 # ================= PANEL Y ESTADO =================
->>>>>>> 3fad767 (Actualizar proyecto)
 
 @app.get("/")
 def index():
@@ -131,7 +128,7 @@ class ChatIn(BaseModel):
 def chat(payload: ChatIn):
     if not payload.message.strip():
         return JSONResponse(
-            {"error": "Mensaje vac√≠o."},
+            {"error": "Mensaje vacÌo."},
             status_code=400,
         )
 
@@ -226,7 +223,7 @@ def evolution():
     return improver.evolution_report()
 
 
-# ================= FASE 2: F√ÅBRICA DE APLICACIONES =================
+# ================= FASE 2: F¡BRICA DE APLICACIONES =================
 
 class ProjectCreate(BaseModel):
     template: str
