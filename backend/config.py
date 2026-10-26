@@ -30,7 +30,7 @@ _load_dotenv()
 
 @dataclass(frozen=True)
 class Settings:
-    llm_base_url: str = os.getenv("LLM_BASE_URL", "http://localhost:11434/v1")
+    llm_base_url: str = os.getenv("LLM_BASE_URL", "")
     llm_api_key: str = os.getenv("LLM_API_KEY", "ollama")
     llm_model: str = os.getenv("LLM_MODEL", "qwen2.5-coder:7b")
     llm_timeout: int = int(os.getenv("LLM_TIMEOUT", "180"))
