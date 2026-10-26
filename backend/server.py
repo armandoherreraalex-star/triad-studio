@@ -1,5 +1,6 @@
 """Servidor FastAPI: panel web, API REST y eventos en tiempo real."""
 import asyncio
+from .r2_backup import backup_all
 from pathlib import Path
 from typing import Optional
 
@@ -44,7 +45,17 @@ async def _safe_send(ws: WebSocket, event: dict) -> None:
 async def _startup() -> None:
     global LOOP
     LOOP = asyncio.get_event_loop()
+    asyncio.create_task(_backup_loop())
 
+
+async def _backup_loop():
+    while True:
+        await asyncio.sleep(1800)  # 30 minutos
+        try:
+            await asyncio.to_thread(backup_all, memory.conn)
+        except Exception:
+            import logging
+            logging.exception("Error al respaldar en Cloudflare R2")
 
 @app.get("/")
 def index():
