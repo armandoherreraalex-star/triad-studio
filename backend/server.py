@@ -131,26 +131,44 @@ def state():
     except Exception:
         logger.exception("Error obteniendo estado del motor")
 
+  
     # Estadísticas de memoria
     try:
         result["stats"] = memory.stats()
     except Exception:
         logger.exception("Error obteniendo estadísticas de memoria")
+        result["stats"] = {
+            "memories": 0,
+            "messages": 0,
+            "tools": 0,
+            "evaluations": 0,
+            "learnings": 0,
+            "avg_score": 0.0,
+        }
 
-    # Agentes
+    # Agentes: conservar los existentes y tolerar atributos ausentes
     try:
-        result["agents"] = [
-            {
-                "name": agent.name,
-                "role": agent.role,
-                "specialty": agent.specialty,
-                "color": agent.color,
-                "voice": agent.voice,
-            }
-            for agent in _ALL_AGENTS.values()
-        ]
+        agents = []
+
+        for key, agent in _ALL_AGENTS.items():
+            try:
+                agents.append({
+                    "name": getattr(agent, "name", key),
+                    "role": getattr(agent, "role", "Sin rol"),
+                    "specialty": getattr(agent, "specialty", ""),
+                    "color": getattr(agent, "color", "#64748b"),
+                    "voice": getattr(agent, "voice", ""),
+                })
+            except Exception:
+                logger.exception(
+                    "Error obteniendo datos del agente %s", key
+                )
+
+        result["agents"] = agents
+
     except Exception:
         logger.exception("Error obteniendo agentes")
+        result["agents"] = []
 
     # Herramientas registradas
     try:
