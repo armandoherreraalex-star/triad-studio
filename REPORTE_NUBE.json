@@ -1,0 +1,2142 @@
+{
+  "proyecto": "C:\\Users\\Microsoft\\Documents\\triad-studio",
+  "archivos_escaneados": 57,
+  "hallazgos": [
+    {
+      "categoria": "LOCALHOST",
+      "archivo": ".env",
+      "linea": 1,
+      "contenido": "LLM_BASE_URL=http://localhost:11434/v1"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": ".env",
+      "linea": 1,
+      "contenido": "LLM_BASE_URL=http://localhost:11434/v1"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": ".env",
+      "linea": 2,
+      "contenido": "LLM_API_KEY=ollama"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": ".env",
+      "linea": 7,
+      "contenido": "HOST=127.0.0.1"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": ".env",
+      "linea": 8,
+      "contenido": "PORT=8000"
+    },
+    {
+      "categoria": "GITHUB",
+      "archivo": "auto-sync.ps1",
+      "linea": 18,
+      "contenido": "Write-Host \"Cambios subidos a GitHub.\" -ForegroundColor Green"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "comprobar_imagenes.py",
+      "linea": 10,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "comprobar_imagenes.py",
+      "linea": 10,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "comprobar_imagenes.py",
+      "linea": 38,
+      "contenido": "CHARS.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "crear_base.py",
+      "linea": 7,
+      "contenido": "import sqlite3"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "crear_base.py",
+      "linea": 10,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "crear_base.py",
+      "linea": 10,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "crear_base.py",
+      "linea": 12,
+      "contenido": "DB_PATH = DATA_DIR / \"triad_memory.db\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "crear_base.py",
+      "linea": 60,
+      "contenido": "DATA_DIR.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "crear_base.py",
+      "linea": 61,
+      "contenido": "conn = sqlite3.connect(str(DB_PATH))"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "crear_base.py",
+      "linea": 66,
+      "contenido": "\"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name\").fetchall()"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 6,
+      "contenido": "ROOT = Path(__file__).resolve().parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "escanear_nube.py",
+      "linea": 6,
+      "contenido": "ROOT = Path(__file__).resolve().parent"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "escanear_nube.py",
+      "linea": 30,
+      "contenido": "\"LOCALHOST\": r\"(localhost|127\\.0\\.0\\.1|0\\.0\\.0\\.0)\","
+    },
+    {
+      "categoria": "RUTA_LOCAL_UNIX",
+      "archivo": "escanear_nube.py",
+      "linea": 32,
+      "contenido": "\"RUTA_LOCAL_UNIX\": r\"/home/|/Users/|/mnt/\","
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "escanear_nube.py",
+      "linea": 33,
+      "contenido": "\"SQLITE\": r\"(sqlite|\\.db\\b|sqlite3)\","
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "escanear_nube.py",
+      "linea": 36,
+      "contenido": "\"ENV\": r\"(os\\.environ|os\\.getenv|process\\.env|dotenv|load_dotenv)\","
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "escanear_nube.py",
+      "linea": 38,
+      "contenido": "\"CLOUDFLARE\": r\"(cloudflare|wrangler|workers)\","
+    },
+    {
+      "categoria": "GITHUB",
+      "archivo": "escanear_nube.py",
+      "linea": 39,
+      "contenido": "\"GITHUB\": r\"(github\\.com|github)\","
+    },
+    {
+      "categoria": "SUPABASE",
+      "archivo": "escanear_nube.py",
+      "linea": 40,
+      "contenido": "\"SUPABASE\": r\"(supabase)\","
+    },
+    {
+      "categoria": "FIREBASE",
+      "archivo": "escanear_nube.py",
+      "linea": 41,
+      "contenido": "\"FIREBASE\": r\"(firebase)\","
+    },
+    {
+      "categoria": "MONGODB",
+      "archivo": "escanear_nube.py",
+      "linea": 42,
+      "contenido": "\"MONGODB\": r\"(mongodb|mongo)\","
+    },
+    {
+      "categoria": "POSTGRES",
+      "archivo": "escanear_nube.py",
+      "linea": 43,
+      "contenido": "\"POSTGRES\": r\"(postgres|postgresql)\","
+    },
+    {
+      "categoria": "MYSQL",
+      "archivo": "escanear_nube.py",
+      "linea": 44,
+      "contenido": "\"MYSQL\": r\"(mysql)\","
+    },
+    {
+      "categoria": "REDIS",
+      "archivo": "escanear_nube.py",
+      "linea": 45,
+      "contenido": "\"REDIS\": r\"(redis)\","
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "escanear_nube.py",
+      "linea": 46,
+      "contenido": "\"SECRETOS\": r\"(API_KEY|SECRET_KEY|TOKEN|PASSWORD|PRIVATE_KEY|ACCESS_KEY)\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 47,
+      "contenido": "\"UPLOADS_LOCALES\": r\"(uploads|storage|media|temp|tmp)\","
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "escanear_nube.py",
+      "linea": 48,
+      "contenido": "\"BASE_DIR\": r\"(BASE_DIR|ROOT_DIR|PROJECT_ROOT|__file__)\","
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 62,
+      "contenido": "text = path.read_text(encoding=\"utf-8\", errors=\"ignore\")"
+    },
+    {
+      "categoria": "RENDER",
+      "archivo": "escanear_nube.py",
+      "linea": 132,
+      "contenido": "\"render.yaml\","
+    },
+    {
+      "categoria": "RENDER",
+      "archivo": "escanear_nube.py",
+      "linea": 133,
+      "contenido": "\"render.yml\","
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "escanear_nube.py",
+      "linea": 136,
+      "contenido": "\"wrangler.toml\","
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "escanear_nube.py",
+      "linea": 137,
+      "contenido": "\"wrangler.json\","
+    },
+    {
+      "categoria": "GITHUB",
+      "archivo": "escanear_nube.py",
+      "linea": 239,
+      "contenido": "print(\"6. GIT / GITHUB\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 251,
+      "contenido": "text = config.read_text(encoding=\"utf-8\", errors=\"ignore\")"
+    },
+    {
+      "categoria": "GITHUB",
+      "archivo": "escanear_nube.py",
+      "linea": 263,
+      "contenido": "print(\"[ADVERTENCIA] No se encontró remote de GitHub.\")"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "escanear_nube.py",
+      "linea": 279,
+      "contenido": "if \"LOCALHOST\" in categories:"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "escanear_nube.py",
+      "linea": 281,
+      "contenido": "\"Hay referencias a localhost/127.0.0.1. \""
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "escanear_nube.py",
+      "linea": 291,
+      "contenido": "if \"SQLITE\" in categories:"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "escanear_nube.py",
+      "linea": 293,
+      "contenido": "\"Se detectó SQLite/archivos .db. \""
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 303,
+      "contenido": "if \"UPLOADS_LOCALES\" in categories:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 305,
+      "contenido": "\"Se detectaron carpetas relacionadas con uploads/storage/media.\""
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "escanear_nube.py",
+      "linea": 318,
+      "contenido": "if \"CLOUDFLARE\" not in categories:"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "escanear_nube.py",
+      "linea": 320,
+      "contenido": "\"No se detectó configuración clara de Cloudflare.\""
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "escanear_nube.py",
+      "linea": 333,
+      "contenido": "report = {"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "escanear_nube.py",
+      "linea": 352,
+      "contenido": "output.write_text("
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "main.py",
+      "linea": 15,
+      "contenido": "uvicorn.run(\"backend.server:app\", host=settings.host, port=settings.port,"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "quitar_azul_eris.py",
+      "linea": 5,
+      "contenido": "im = Image.open(entrada).convert(\"RGBA\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "requirements.txt",
+      "linea": 6,
+      "contenido": "python-dotenv==1.0.1"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\agents.py",
+      "linea": 148,
+      "contenido": "\"content\": f\"[{name}] {result[:6000]}\"})"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\agent_factory.py",
+      "linea": 11,
+      "contenido": "AGENTS_DIR.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\agent_factory.py",
+      "linea": 51,
+      "contenido": "path.write_text(json.dumps({"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\agent_factory.py",
+      "linea": 73,
+      "contenido": "data = json.loads(file.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\change_manager.py",
+      "linea": 7,
+      "contenido": "PROJECT_ROOT = Path(__file__).resolve().parent.parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\change_manager.py",
+      "linea": 7,
+      "contenido": "PROJECT_ROOT = Path(__file__).resolve().parent.parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\change_manager.py",
+      "linea": 13,
+      "contenido": "file_path = (PROJECT_ROOT / relative_path).resolve()"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\change_manager.py",
+      "linea": 16,
+      "contenido": "if not file_path.is_relative_to(PROJECT_ROOT):"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\change_manager.py",
+      "linea": 35,
+      "contenido": "source = file_path.read_text(encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\change_manager.py",
+      "linea": 41,
+      "contenido": "\"file\": str(file_path.relative_to(PROJECT_ROOT))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\config.py",
+      "linea": 5,
+      "contenido": "BASE_DIR = Path(__file__).resolve().parent.parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 5,
+      "contenido": "BASE_DIR = Path(__file__).resolve().parent.parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 6,
+      "contenido": "DATA_DIR = BASE_DIR / \"data\""
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 7,
+      "contenido": "WORKSPACE_DIR = BASE_DIR / \"workspace\""
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 9,
+      "contenido": "CUSTOM_TOOLS_DIR = BASE_DIR / \"custom_tools\""
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 10,
+      "contenido": "FRONTEND_DIR = BASE_DIR / \"frontend\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\config.py",
+      "linea": 13,
+      "contenido": "_d.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 16,
+      "contenido": "def _load_dotenv() -> None:"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\config.py",
+      "linea": 17,
+      "contenido": "env_file = BASE_DIR / \".env\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\config.py",
+      "linea": 20,
+      "contenido": "for line in env_file.read_text(encoding=\"utf-8\").splitlines():"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 25,
+      "contenido": "os.environ.setdefault(key.strip(), value.strip().strip('\"').strip(\"'\"))"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 28,
+      "contenido": "_load_dotenv()"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "backend\\config.py",
+      "linea": 33,
+      "contenido": "llm_base_url: str = os.getenv(\"LLM_BASE_URL\", \"http://localhost:11434/v1\")"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\config.py",
+      "linea": 33,
+      "contenido": "llm_base_url: str = os.getenv(\"LLM_BASE_URL\", \"http://localhost:11434/v1\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 33,
+      "contenido": "llm_base_url: str = os.getenv(\"LLM_BASE_URL\", \"http://localhost:11434/v1\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 34,
+      "contenido": "llm_api_key: str = os.getenv(\"LLM_API_KEY\", \"ollama\")"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\config.py",
+      "linea": 34,
+      "contenido": "llm_api_key: str = os.getenv(\"LLM_API_KEY\", \"ollama\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 35,
+      "contenido": "llm_model: str = os.getenv(\"LLM_MODEL\", \"qwen2.5-coder:7b\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 36,
+      "contenido": "llm_timeout: int = int(os.getenv(\"LLM_TIMEOUT\", \"180\"))"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 37,
+      "contenido": "max_steps: int = int(os.getenv(\"MAX_STEPS\", \"6\"))"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 38,
+      "contenido": "command_timeout: int = int(os.getenv(\"COMMAND_TIMEOUT\", \"60\"))"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "backend\\config.py",
+      "linea": 39,
+      "contenido": "host: str = os.getenv(\"HOST\", \"127.0.0.1\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 39,
+      "contenido": "host: str = os.getenv(\"HOST\", \"127.0.0.1\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\config.py",
+      "linea": 40,
+      "contenido": "port: int = int(os.getenv(\"PORT\", \"8000\"))"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\llm.py",
+      "linea": 20,
+      "contenido": "self.headers = {\"Authorization\": f\"Bearer {settings.llm_api_key}\","
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\llm.py",
+      "linea": 30,
+      "contenido": "def chat(self, messages: list, temperature: float = 0.35, max_tokens: int = 4096) -> str:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\llm.py",
+      "linea": 30,
+      "contenido": "def chat(self, messages: list, temperature: float = 0.35, max_tokens: int = 4096) -> str:"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\llm.py",
+      "linea": 32,
+      "contenido": "\"temperature\": temperature, \"max_tokens\": max_tokens}"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\llm.py",
+      "linea": 32,
+      "contenido": "\"temperature\": temperature, \"max_tokens\": max_tokens}"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\memory.py",
+      "linea": 3,
+      "contenido": "import sqlite3"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\memory.py",
+      "linea": 10,
+      "contenido": "DB_PATH = DATA_DIR / \"triad_memory.db\""
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\memory.py",
+      "linea": 65,
+      "contenido": "def _tokens(text: str) -> set:"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\memory.py",
+      "linea": 75,
+      "contenido": "self.conn = sqlite3.connect(str(path), check_same_thread=False)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\memory.py",
+      "linea": 76,
+      "contenido": "self.conn.row_factory = sqlite3.Row"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\memory.py",
+      "linea": 92,
+      "contenido": "q = _tokens(query)"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\memory.py",
+      "linea": 97,
+      "contenido": "tokens = _tokens(row[\"content\"] + \" \" + row[\"tags\"])"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\memory.py",
+      "linea": 98,
+      "contenido": "overlap = len(q & tokens)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\migrate_v3.py",
+      "linea": 4,
+      "contenido": "import sqlite3"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\migrate_v3.py",
+      "linea": 8,
+      "contenido": "DB = DATA_DIR / \"triad_memory.db\""
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\migrate_v3.py",
+      "linea": 16,
+      "contenido": "conn = sqlite3.connect(str(DB))"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "backend\\ollama_client.py",
+      "linea": 4,
+      "contenido": "OLLAMA_URL = \"http://127.0.0.1:11434\""
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\ollama_client.py",
+      "linea": 4,
+      "contenido": "OLLAMA_URL = \"http://127.0.0.1:11434\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\ollama_client.py",
+      "linea": 15,
+      "contenido": "with urllib.request.urlopen(req, timeout=timeout) as response:"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\persist.py",
+      "linea": 3,
+      "contenido": "Almacén: Cloudflare R2 (plan gratuito, 10 GB). Nada se pierde aunque el"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\persist.py",
+      "linea": 8,
+      "contenido": "data/triad_memory.db como siempre."
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\persist.py",
+      "linea": 16,
+      "contenido": "from .config import BASE_DIR"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 18,
+      "contenido": "BUCKET = os.getenv(\"R2_BUCKET\", \"triad-backups\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 19,
+      "contenido": "PREFIX = os.getenv(\"R2_PREFIX\", \"triad\").strip(\"/\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 26,
+      "contenido": "return bool(os.getenv(\"R2_ENDPOINT\") and os.getenv(\"R2_KEY_ID\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 27,
+      "contenido": "and os.getenv(\"R2_SECRET\") and BUCKET)"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\persist.py",
+      "linea": 31,
+      "contenido": "\"\"\"Cliente S3 compatible con Cloudflare R2. Falla con mensaje claro si falta boto3.\"\"\""
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 41,
+      "contenido": "endpoint_url=os.environ[\"R2_ENDPOINT\"].strip(),"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 42,
+      "contenido": "aws_access_key_id=os.environ[\"R2_KEY_ID\"].strip(),"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\persist.py",
+      "linea": 42,
+      "contenido": "aws_access_key_id=os.environ[\"R2_KEY_ID\"].strip(),"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\persist.py",
+      "linea": 43,
+      "contenido": "aws_secret_access_key=os.environ[\"R2_SECRET\"].strip(),"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\persist.py",
+      "linea": 43,
+      "contenido": "aws_secret_access_key=os.environ[\"R2_SECRET\"].strip(),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\persist.py",
+      "linea": 45,
+      "contenido": "config=Config(signature_version=\"s3v4\", retries={\"max_attempts\": RETRIES}))"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\persist.py",
+      "linea": 61,
+      "contenido": "\"→ Revisa: endpoint https://TU_ID.r2.cloudflarestorage.com, \""
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\persist.py",
+      "linea": 61,
+      "contenido": "\"→ Revisa: endpoint https://TU_ID.r2.cloudflarestorage.com, \""
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\persist.py",
+      "linea": 62,
+      "contenido": "\"token con permiso Object Read & Write, y nombre exacto del bucket.\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\persist.py",
+      "linea": 75,
+      "contenido": "with tarfile.open(fileobj=buf, mode=\"w:gz\") as tar:"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\persist.py",
+      "linea": 77,
+      "contenido": "src = BASE_DIR / name"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\persist.py",
+      "linea": 89,
+      "contenido": "return \"local (data/triad_memory.db)\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\persist.py",
+      "linea": 100,
+      "contenido": "with tarfile.open(fileobj=buf, mode=\"r:gz\") as tar:"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\persist.py",
+      "linea": 101,
+      "contenido": "tar.extractall(BASE_DIR)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 11,
+      "contenido": "from .templates import EXPORTS_DIR, IGNORE_DIRS, PROJECTS_DIR, REGISTRY, PLACEHOLDER"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 30,
+      "contenido": "return json.loads(path.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 46,
+      "contenido": "if self._alive(int(pid_file.read_text().strip())):"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 61,
+      "contenido": "meta = json.loads(meta_file.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 67,
+      "contenido": "\"template\": meta.get(\"template\", \"?\"),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 76,
+      "contenido": "commands = REGISTRY.get(meta[\"template\"], {}).get(\"dev_commands\", {})"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 89,
+      "contenido": "base = os.path.basename(parts[0]).lower().replace(\".exe\", \"\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 94,
+      "contenido": "log = open(log_path, \"ab\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 95,
+      "contenido": "proc = subprocess.Popen("
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 98,
+      "contenido": "(project_dir / \"project.pid\").write_text(str(proc.pid), encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 110,
+      "contenido": "pid = int(pid_file.read_text().strip())"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 132,
+      "contenido": "commands = REGISTRY.get(meta[\"template\"], {}).get(\"install\", [])"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 140,
+      "contenido": "base = os.path.basename(parts[0]).lower().replace(\".exe\", \"\")"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\projects.py",
+      "linea": 147,
+      "contenido": "return \"\\n\".join(outputs)[:9000]"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 151,
+      "contenido": "EXPORTS_DIR.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\projects.py",
+      "linea": 168,
+      "contenido": "content = log_path.read_text(encoding=\"utf-8\", errors=\"ignore\").splitlines()"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\quality.py",
+      "linea": 8,
+      "contenido": "from .templates import PROJECTS_DIR"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\quality.py",
+      "linea": 30,
+      "contenido": "ast.parse(f.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\quality.py",
+      "linea": 37,
+      "contenido": "html_ok = all(\"</html>\" in f.read_text(encoding=\"utf-8\", errors=\"ignore\").lower()"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\quality.py",
+      "linea": 50,
+      "contenido": "meta = json.loads(meta_file.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 4,
+      "contenido": "import sqlite3"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 5,
+      "contenido": "import tempfile"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 13,
+      "contenido": "from .config import BASE_DIR, DATA_DIR, WORKSPACE_DIR, CUSTOM_TOOLS_DIR"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 17,
+      "contenido": "BUCKET = os.getenv(\"R2_BUCKET\", \"triad-backups\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 18,
+      "contenido": "PREFIX = os.getenv(\"R2_PREFIX\", \"triad\").strip(\"/\")"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 19,
+      "contenido": "DB_PATH = DATA_DIR / \"triad_memory.db\""
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 23,
+      "contenido": "endpoint = os.getenv(\"R2_ENDPOINT\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 24,
+      "contenido": "key_id = os.getenv(\"R2_KEY_ID\")"
+    },
+    {
+      "categoria": "ENV",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 25,
+      "contenido": "secret = os.getenv(\"R2_SECRET\")"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 33,
+      "contenido": "aws_access_key_id=key_id,"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 34,
+      "contenido": "aws_secret_access_key=secret,"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 70,
+      "contenido": "destination = (BASE_DIR / item.filename).resolve()"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 71,
+      "contenido": "if not destination.is_relative_to(BASE_DIR.resolve()):"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 73,
+      "contenido": "archive.extractall(BASE_DIR)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 86,
+      "contenido": "with tempfile.TemporaryDirectory() as temp:"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 87,
+      "contenido": "temp_path = Path(temp)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 87,
+      "contenido": "temp_path = Path(temp)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 88,
+      "contenido": "snapshot = temp_path / \"triad_memory.db\""
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 88,
+      "contenido": "snapshot = temp_path / \"triad_memory.db\""
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 90,
+      "contenido": "with sqlite3.connect(str(snapshot)) as destination:"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 98,
+      "contenido": "archive.write(snapshot, \"data/triad_memory.db\")"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 107,
+      "contenido": "\"triad_memory.db\","
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 108,
+      "contenido": "\"triad_memory.db-wal\","
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 109,
+      "contenido": "\"triad_memory.db-shm\","
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\r2_backup.py",
+      "linea": 112,
+      "contenido": "archive.write(file, file.relative_to(BASE_DIR))"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\reports.py",
+      "linea": 7,
+      "contenido": "_TEMPLATE = \"\"\"<!DOCTYPE html>"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\reports.py",
+      "linea": 36,
+      "contenido": "@media print {{ body {{ background:#fff; }} .sheet {{ padding:0; }} }}"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\reports.py",
+      "linea": 86,
+      "contenido": "html = _TEMPLATE.format(title=title, kicker=kicker, meta=stamp,"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\reports.py",
+      "linea": 90,
+      "contenido": "path.write_text(html, encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\self_improve.py",
+      "linea": 43,
+      "contenido": "path.write_text(code, encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\server.py",
+      "linea": 13,
+      "contenido": "from backend.config import BASE_DIR, FRONTEND_DIR"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 27,
+      "contenido": "from backend.templates import create_project, list_templates, template_info"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\server.py",
+      "linea": 36,
+      "contenido": "ASSETS_DIR = BASE_DIR / \"assets\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 37,
+      "contenido": "ASSETS_DIR.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\server.py",
+      "linea": 83,
+      "contenido": "logging.exception(\"Error al respaldar en Cloudflare R2\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 310,
+      "contenido": "template: str"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 320,
+      "contenido": "@app.get(\"/api/templates\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 321,
+      "contenido": "def api_templates():"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 322,
+      "contenido": "return {\"templates\": list_templates()}"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 325,
+      "contenido": "@app.get(\"/api/templates/{template}\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 326,
+      "contenido": "def api_template_info(template: str):"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 328,
+      "contenido": "return template_info(template)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 345,
+      "contenido": "payload.template,"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 352,
+      "contenido": "f\"Proyecto '{payload.name}' creado desde {payload.template}\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\server.py",
+      "linea": 542,
+      "contenido": "return Response(content=data, media_type=\"audio/mpeg\")"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\server.py",
+      "linea": 568,
+      "contenido": "\"result\": \"Copia ZIP guardada en Cloudflare R2\""
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\task_queue.py",
+      "linea": 23,
+      "contenido": "def __init__(self, workers: int = 2):"
+    },
+    {
+      "categoria": "CLOUDFLARE",
+      "archivo": "backend\\task_queue.py",
+      "linea": 29,
+      "contenido": "for i in range(workers):"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 87,
+      "contenido": "attempt = 0"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\task_queue.py",
+      "linea": 93,
+      "contenido": "task[\"result\"] = str(result)[:4000]"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 101,
+      "contenido": "attempt += 1"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 102,
+      "contenido": "task[\"retries\"] = attempt"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 105,
+      "contenido": "{\"t\": _now(), \"text\": f\"intento {attempt} fallido: {exc}\"})"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 106,
+      "contenido": "if attempt > retries:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 111,
+      "contenido": "time.sleep(min(2 ** attempt, 20))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 116,
+      "contenido": "CHECKPOINTS.write_text(json.dumps(self.tasks, ensure_ascii=False),"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\task_queue.py",
+      "linea": 125,
+      "contenido": "self.tasks = json.loads(CHECKPOINTS.read_text(encoding=\"utf-8\"))"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 10,
+      "contenido": "TEMPLATES_DIR = WORKSPACE_DIR / \"templates\""
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 14,
+      "contenido": "for _d in (TEMPLATES_DIR, PROJECTS_DIR, EXPORTS_DIR):"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 15,
+      "contenido": "_d.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\templates.py",
+      "linea": 19,
+      "contenido": "\".ttf\", \".otf\", \".pdf\", \".zip\", \".db\", \".mp3\", \".mp4\"}"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\templates.py",
+      "linea": 25,
+      "contenido": "\"description\": \"Backend profesional con autenticación, CRUD, SQLite y documentación /docs.\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 68,
+      "contenido": "def list_templates() -> list:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 75,
+      "contenido": "\"installed\": (TEMPLATES_DIR / key).is_dir(),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 82,
+      "contenido": "def template_info(template: str) -> dict:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 83,
+      "contenido": "if template not in REGISTRY:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 84,
+      "contenido": "raise ValueError(f\"Plantilla desconocida: {template}. Disponibles: {', '.join(REGISTRY)}\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 85,
+      "contenido": "source = TEMPLATES_DIR / template"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 89,
+      "contenido": "entry = dict(REGISTRY[template])"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 90,
+      "contenido": "entry[\"id\"] = template"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 96,
+      "contenido": "def read_template_file(template: str, path: str) -> str:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 97,
+      "contenido": "source = (TEMPLATES_DIR / template / path).resolve()"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 98,
+      "contenido": "if not str(source).startswith(str(TEMPLATES_DIR.resolve())):"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 100,
+      "contenido": "return source.read_text(encoding=\"utf-8\")[:12000]"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\templates.py",
+      "linea": 100,
+      "contenido": "return source.read_text(encoding=\"utf-8\")[:12000]"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 103,
+      "contenido": "def create_project(template: str, name: str, variables: dict | None = None) -> dict:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 104,
+      "contenido": "if template not in REGISTRY:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 105,
+      "contenido": "raise ValueError(f\"Plantilla desconocida: {template}. Disponibles: {', '.join(REGISTRY)}\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 106,
+      "contenido": "source = TEMPLATES_DIR / template"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 109,
+      "contenido": "f\"La plantilla '{template}' no está instalada. Crea sus archivos en {source}.\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 111,
+      "contenido": "slug = _slugify(name) or template"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 117,
+      "contenido": "\"project_name\": name or template,"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 123,
+      "contenido": "values.update(REGISTRY[template].get(\"vars\", {}))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 133,
+      "contenido": "dest.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 135,
+      "contenido": "dest.parent.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 139,
+      "contenido": "text = item.read_text(encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 141,
+      "contenido": "dest.write_text(rendered, encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 147,
+      "contenido": "\"template\": template,"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 151,
+      "contenido": "\"dev_commands\": REGISTRY[template].get(\"dev_commands\", {}),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 152,
+      "contenido": "\"install\": REGISTRY[template].get(\"install\", []),"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\templates.py",
+      "linea": 155,
+      "contenido": "(target / \"project.json\").write_text("
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 20,
+      "contenido": "def safe_path(path: str) -> Path:"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 25,
+      "contenido": "target.parent.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\tools.py",
+      "linea": 47,
+      "contenido": "return str(result)[:12000]"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 57,
+      "contenido": "path = safe_path(args.get(\"path\", \".\"))"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 73,
+      "contenido": "target = safe_path(args[\"path\"])"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 74,
+      "contenido": "return target.read_text(encoding=\"utf-8\")[:12000]"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\tools.py",
+      "linea": 74,
+      "contenido": "return target.read_text(encoding=\"utf-8\")[:12000]"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 78,
+      "contenido": "target = safe_path(args[\"path\"])"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 80,
+      "contenido": "target.write_text(content, encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 85,
+      "contenido": "target = safe_path(args[\"path\"])"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 86,
+      "contenido": "target.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 92,
+      "contenido": "root = safe_path(args.get(\"path\", \".\"))"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "backend\\tools.py",
+      "linea": 95,
+      "contenido": "if not item.is_file() or item.suffix.lower() in {\".png\", \".jpg\", \".pdf\", \".zip\", \".db\"}:"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 98,
+      "contenido": "for num, line in enumerate(item.read_text(encoding=\"utf-8\").splitlines(), 1):"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 111,
+      "contenido": "code = safe_path(args[\"path\"]).read_text(encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 122,
+      "contenido": "code = safe_path(args[\"path\"]).read_text(encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 124,
+      "contenido": "script.parent.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 125,
+      "contenido": "script.write_text(code, encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\tools.py",
+      "linea": 130,
+      "contenido": "return out.strip()[:11000] or f\"Proceso terminado con código {proc.returncode}.\""
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\tools.py",
+      "linea": 141,
+      "contenido": "return ((proc.stdout or \"\") + (proc.stderr or \"\")).strip()[:11000]"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "backend\\tools.py",
+      "linea": 158,
+      "contenido": "return re.sub(r\"\\s+\", \" \", text)[:8000]"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 208,
+      "contenido": "from .templates import create_project"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 211,
+      "contenido": "args[\"template\"],"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 212,
+      "contenido": "args.get(\"name\") or args[\"template\"],"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 218,
+      "contenido": "def _list_templates(args):"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 219,
+      "contenido": "from .templates import list_templates"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 221,
+      "contenido": "return json.dumps(list_templates(), ensure_ascii=False, indent=2)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 224,
+      "contenido": "def _read_template(args):"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 225,
+      "contenido": "from .templates import read_template_file, template_info"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 228,
+      "contenido": "return read_template_file(args[\"template\"], args[\"path\"])"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 231,
+      "contenido": "template_info(args[\"template\"]),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 291,
+      "contenido": "from .templates import list_templates"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 307,
+      "contenido": "templates = list_templates()"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 309,
+      "contenido": "for template in templates:"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 312,
+      "contenido": "if template.get(\"installed\", False)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 316,
+      "contenido": "f\"Plantilla {template.get('id', 'desconocida')}: {status}\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 333,
+      "contenido": "probe.write_text(\"ok\", encoding=\"utf-8\")"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 348,
+      "contenido": "\"template\": \"string\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 356,
+      "contenido": "\"list_templates\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 359,
+      "contenido": "_list_templates"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 363,
+      "contenido": "\"read_template\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 366,
+      "contenido": "\"template\": \"string\","
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "backend\\tools.py",
+      "linea": 369,
+      "contenido": "_read_template"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\voice.py",
+      "linea": 12,
+      "contenido": "from .config import BASE_DIR"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "backend\\voice.py",
+      "linea": 14,
+      "contenido": "VOICE_DIR = BASE_DIR / \"assets\" / \"voice\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "backend\\voice.py",
+      "linea": 15,
+      "contenido": "VOICE_DIR.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 172,
+      "contenido": "grid-template-columns: 340px 1fr 320px;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 243,
+      "contenido": "grid-template-columns: 96px 1fr;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 566,
+      "contenido": "grid-template-columns: 64px 1fr;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 639,
+      "contenido": "grid-template-columns: 1fr 1fr;"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "frontend\\index.html",
+      "linea": 755,
+      "contenido": "@media (max-width:1180px) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 755,
+      "contenido": "@media (max-width:1180px) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 757,
+      "contenido": "grid-template-columns: 1fr;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 798,
+      "contenido": "@media (prefers-reduced-motion: reduce) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 819,
+      "contenido": "<div>Calidad media <b id=\"avgScore\">0.0</b></div>"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 978,
+      "contenido": "ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 984,
+      "contenido": "ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1208,
+      "contenido": "const [tRes, pRes] = await Promise.all([fetch('/api/templates'), fetch('/api/projects')]);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1211,
+      "contenido": "if (grid) grid.innerHTML = (tData.templates || []).map(t => `"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1224,
+      "contenido": "<div class=\"nm\"><b>${p.name}</b> Â· ${p.template}</div>"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1233,
+      "contenido": "window.faCreate = async function (template) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1236,
+      "contenido": "addLog('plan', 'Director', `Creando proyecto \"${name}\" desde ${template}`);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1239,
+      "contenido": "body: JSON.stringify({ template, name, vars: {} })"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "frontend\\index.html",
+      "linea": 1264,
+      "contenido": "window.faExport = async function (slug) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1321,
+      "contenido": "' | Media: ' + (evo.average || 0) + ' | Tendencia: ' + (evo.trend || 0);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1335,
+      "contenido": ".factory-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px}"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1377,
+      "contenido": "fetch('/api/templates'),"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1390,
+      "contenido": "grid.innerHTML = (tData.templates || []).map(t => `"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1409,
+      "contenido": "<b>${p.name}</b> Â· ${p.template} Â· ${p.files} archivos"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1423,
+      "contenido": "async function faCreate(template) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1428,
+      "contenido": "`Creando proyecto \"${name}\" desde la plantilla ${template}`);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "frontend\\index.html",
+      "linea": 1434,
+      "contenido": "body: JSON.stringify({ template, name, vars: {} })"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "workspace\\README.md",
+      "linea": 10,
+      "contenido": "Documentación interactiva: http://127.0.0.1:{{port}}/docs"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\reports\\informe-de-prueba-triad-studio.html",
+      "linea": 30,
+      "contenido": "@media print { body { background:#fff; } .sheet { padding:0; } }"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 16,
+      "contenido": "TOKENS: dict = {}"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 21,
+      "contenido": "password: str"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 30,
+      "contenido": "def auth(x_token: str = Header(default=\"\")) -> dict:"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 31,
+      "contenido": "user = TOKENS.get(x_token)"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 33,
+      "contenido": "raise HTTPException(status_code=401, detail=\"Token inválido o ausente.\")"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 51,
+      "contenido": "cur = db.execute(\"INSERT INTO users (email, password) VALUES (?, ?)\","
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 52,
+      "contenido": "(payload.email, payload.password))"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 62,
+      "contenido": "row = db.execute(\"SELECT * FROM users WHERE email = ? AND password = ?\","
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 63,
+      "contenido": "(payload.email, payload.password)).fetchone()"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 66,
+      "contenido": "token = secrets.token_hex(24)"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 67,
+      "contenido": "TOKENS[token] = {\"id\": row[\"id\"], \"email\": row[\"email\"]}"
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\main.py",
+      "linea": 68,
+      "contenido": "return {\"token\": token}"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 2,
+      "contenido": "import sqlite3"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 5,
+      "contenido": "DB_PATH = Path(__file__).parent / \"{{project_slug}}.db\""
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 5,
+      "contenido": "DB_PATH = Path(__file__).parent / \"{{project_slug}}.db\""
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 5,
+      "contenido": "DB_PATH = Path(__file__).parent / \"{{project_slug}}.db\""
+    },
+    {
+      "categoria": "SECRETOS",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 11,
+      "contenido": "password TEXT NOT NULL"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 24,
+      "contenido": "def get_db() -> sqlite3.Connection:"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 25,
+      "contenido": "conn = sqlite3.connect(str(DB_PATH))"
+    },
+    {
+      "categoria": "SQLITE",
+      "archivo": "workspace\\templates\\fastapi-saas\\models.py",
+      "linea": 26,
+      "contenido": "conn.row_factory = sqlite3.Row"
+    },
+    {
+      "categoria": "LOCALHOST",
+      "archivo": "workspace\\templates\\fastapi-saas\\README.md",
+      "linea": 10,
+      "contenido": "Documentación interactiva: http://127.0.0.1:{{port}}/docs"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 150,
+      "contenido": "for (let x = 0; x < cv.width; x += 40) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, cv.height); ctx.stroke(); }"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 151,
+      "contenido": "for (let y = 0; y < cv.height; y += 40) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(cv.width, y); ctx.stroke(); }"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 155,
+      "contenido": "ctx.beginPath(); ctx.arc(c.x, c.y, c.r, 0, Math.PI * 2); ctx.fill();"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 166,
+      "contenido": "ctx.beginPath(); ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2); ctx.fill();"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 170,
+      "contenido": "ctx.beginPath(); ctx.arc(player.x, player.y, player.r + 16, 0, Math.PI * 2); ctx.stroke();"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\game-2d\\index.html",
+      "linea": 174,
+      "contenido": "ctx.beginPath(); ctx.arc(player.x, player.y, player.r, 0, Math.PI * 2); ctx.fill();"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 9,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "BASE_DIR",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 9,
+      "contenido": "BASE = Path(__file__).parent"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 30,
+      "contenido": "INBOX.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 37,
+      "contenido": "dest.mkdir(exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 47,
+      "contenido": "REPORTS.mkdir(exist_ok=True)"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 50,
+      "contenido": "path.write_text(json.dumps({"
+    },
+    {
+      "categoria": "ARCHIVOS_LOCALES",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 65,
+      "contenido": "INBOX.mkdir(parents=True, exist_ok=True)"
+    },
+    {
+      "categoria": "PUERTOS",
+      "archivo": "workspace\\templates\\python-bot\\bot.py",
+      "linea": 70,
+      "contenido": "report = write_report(summary)"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\templates\\static-landing\\styles.css",
+      "linea": 170,
+      "contenido": "grid-template-columns: repeat(3, 1fr);"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\templates\\static-landing\\styles.css",
+      "linea": 241,
+      "contenido": "@media (max-width: 900px) {"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\templates\\static-landing\\styles.css",
+      "linea": 243,
+      "contenido": "grid-template-columns: 1fr;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\templates\\react-dashboard\\src\\styles.css",
+      "linea": 24,
+      "contenido": "grid-template-columns: 240px 1fr;"
+    },
+    {
+      "categoria": "UPLOADS_LOCALES",
+      "archivo": "workspace\\templates\\react-dashboard\\src\\styles.css",
+      "linea": 86,
+      "contenido": "grid-template-columns: repeat(4, 1fr);"
+    }
+  ],
+  "archivos_despliegue": [
+    "requirements.txt",
+    ".env"
+  ],
+  "archivos_grandes": [],
+  "advertencias": [
+    "Hay referencias a localhost/127.0.0.1. Debemos determinar si son internas o URLs que deben cambiarse.",
+    "Se detectó SQLite/archivos .db. Render puede perder almacenamiento local al reiniciar/recrear el servicio.",
+    "Hay operaciones de lectura/escritura de archivos. Debemos comprobar si esos datos necesitan almacenamiento persistente.",
+    "Se detectaron carpetas relacionadas con uploads/storage/media."
+  ],
+  "errores": []
+}
