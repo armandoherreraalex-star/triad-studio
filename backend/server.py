@@ -64,6 +64,7 @@ async def _safe_send(ws: WebSocket, event: dict) -> None:
         clients.discard(ws)
 
 
+
 @app.on_event("startup")
 async def _startup() -> None:
     global LOOP
@@ -72,13 +73,16 @@ async def _startup() -> None:
 
 
 async def _backup_loop():
+    import logging
+
     while True:
-        await asyncio.sleep(1800)  # 30 minutos
         try:
             await asyncio.to_thread(backup_all, memory.conn)
+            logging.info("Respaldo automático de TRIAD completado.")
         except Exception:
-            import logging
             logging.exception("Error al respaldar en Cloudflare R2")
+
+        await asyncio.sleep(300)  # 5 minutos
 
 
 # ================= PANEL Y ESTADO =================
