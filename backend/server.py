@@ -92,12 +92,54 @@ def index():
     return FileResponse(str(FRONTEND_DIR / "index.html"))
 
 
+
 @app.get("/api/state")
 def state():
-    return {
-        "engine": "online" if orchestrator.engine_online else "offline",
-        "stats": memory.stats(),
-        "agents": [
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    # Mantener la estructura original y permitir que el panel
+    # siga funcionando si falla alguno de sus componentes.
+    result = {
+        "engine": "offline",
+        "stats": {
+            "memories": 0,
+            "messages": 0,
+            "tools": 0,
+            "evaluations": 0,
+            "learnings": 0,
+            "avg_score": 0.0,
+        },
+        "agents": [],
+        "tools": [],
+        "learnings": [],
+        "evolution": {
+            "samples": 0,
+            "average": 0.0,
+            "trend": 0.0,
+            "learnings": 0,
+        },
+        "recent": [],
+    }
+
+    # Estado del motor
+    try:
+        result["engine"] = (
+            "online" if orchestrator.engine_online else "offline"
+        )
+    except Exception:
+        logger.exception("Error obteniendo estado del motor")
+
+    # Estadísticas de memoria
+    try:
+        result["stats"] = memory.stats()
+    except Exception:
+        logger.exception("Error obteniendo estadísticas de memoria")
+
+    # Agentes
+    try:
+        result["agents"] = [
             {
                 "name": agent.name,
                 "role": agent.role,
@@ -106,12 +148,35 @@ def state():
                 "voice": agent.voice,
             }
             for agent in _ALL_AGENTS.values()
-        ],
-        "tools": registry.list(),
-        "learnings": memory.list_learnings(10),
-        "evolution": improver.evolution_report(),
-        "recent": memory.recent_messages("default", 12),
-    }
+        ]
+    except Exception:
+        logger.exception("Error obteniendo agentes")
+
+    # Herramientas registradas
+    try:
+        result["tools"] = registry.list()
+    except Exception:
+        logger.exception("Error obteniendo herramientas")
+
+    # Aprendizajes
+    try:
+        result["learnings"] = memory.list_learnings(10)
+    except Exception:
+        logger.exception("Error obteniendo aprendizajes")
+
+    # Evolución del sistema
+    try:
+        result["evolution"] = improver.evolution_report()
+    except Exception:
+        logger.exception("Error obteniendo informe de evolución")
+
+    # Conversaciones recientes
+    try:
+        result["recent"] = memory.recent_messages("default", 12)
+    except Exception:
+        logger.exception("Error obteniendo conversaciones recientes")
+
+    return result
 
 
 # ================= CHAT =================
