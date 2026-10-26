@@ -469,13 +469,20 @@ def api_voice_status():
     return {"ok": voice_engine.available(), "voices": voices}
 
 
+
 # ================= COPIAS DE SEGURIDAD =================
 
 @app.post("/api/backup")
 def api_backup():
     try:
-        return {"ok": True, "result": backup_now()}
+        backup_all(memory.conn)
+        return {
+            "ok": True,
+            "result": "Copia ZIP guardada en Cloudflare R2"
+        }
     except Exception as exc:
+        import logging
+        logging.exception("Error al crear la copia de seguridad")
         return JSONResponse(
             {"ok": False, "error": str(exc)},
             status_code=500,
