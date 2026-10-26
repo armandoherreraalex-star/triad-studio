@@ -189,6 +189,8 @@ class Memory:
                 "tools": count("tools"), "evaluations": count("evaluations"),
                 "learnings": count("learnings"),
                 "avg_score": round(avg or 0.0, 3)}
+from .r2_backup import restore_if_available
 
+restore_if_available()
 
 memory = Memory()
