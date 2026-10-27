@@ -73,16 +73,19 @@ async def _startup() -> None:
 
 
 async def _backup_loop():
+    import asyncio
     import logging
 
     while True:
         try:
+            print("Iniciando respaldo automático en Cloudflare R2...", flush=True)
             await asyncio.to_thread(backup_all, memory.conn)
-            logging.info("Respaldo automático de TRIAD completado.")
-        except Exception:
-            logging.exception("Error al respaldar en Cloudflare R2")
+            print("RESPALDO AUTOMÁTICO COMPLETADO.", flush=True)
+        except Exception as exc:
+            logging.exception("ERROR EN EL RESPALDO AUTOMÁTICO")
+            print(f"FALLO DEL RESPALDO: {exc}", flush=True)
 
-        await asyncio.sleep(300)  # 5 minutos
+        await asyncio.sleep(300)
 
 
 # ================= PANEL Y ESTADO =================
