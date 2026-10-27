@@ -11,3 +11,7 @@ workspace/changes/*
 !workspace/changes/pending/
 !workspace/changes/validated/
 !workspace/changes/rejected/
+
+# Registros y archivos locales de respaldo
+backup_local.log
+TRIAD_STUDIO_LOCAL_*.zip
