@@ -1,6 +1,4 @@
-﻿
-name: TRIAD automatic backup
-
+﻿name: TRIAD automatic backup
 on:
   push:
     branches:
@@ -8,7 +6,6 @@ on:
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
-
 jobs:
   backup:
     runs-on: ubuntu-latest
@@ -17,11 +14,12 @@ jobs:
         env:
           BACKUP_TOKEN: ${{ secrets.TRIAD_BACKUP_TOKEN }}
         run: |
-          curl --fail-with-body --silent --show-error \
+          echo "Contactando con TRIAD STUDIO..."
+          curl --silent --show-error \
             --retry 2 \
             --retry-delay 5 \
             --max-time 180 \
             -X POST \
             -H "X-Backup-Token: ${BACKUP_TOKEN}" \
+            -w "\nHTTP_STATUS:%{http_code}\n" \
             https://triad-studio.onrender.com/api/backup
-
