@@ -2,6 +2,9 @@
 """Servidor FastAPI: panel web, API REST, proyectos, agentes, voz y eventos."""
 
 import asyncio
+import os
+import secrets
+from fastapi import Header
 from .r2_backup import backup_all
 from typing import Optional
 
@@ -563,7 +566,17 @@ def api_voice_status():
 # ================= COPIAS DE SEGURIDAD =================
 
 @app.post("/api/backup")
-def api_backup():
+def api_backup(x_backup_token: str | None = Header(default=None)):
+    expected = os.getenv("BACKUP_TOKEN", "")
+
+    if not expected or not secrets.compare_digest(
+        x_backup_token or "", expected
+    ):
+        return JSONResponse(
+            {"ok": False, "error": "No autorizado"},
+            status_code=401,
+        )
+
     try:
         backup_all(memory.conn)
         return {
@@ -577,7 +590,6 @@ def api_backup():
             {"ok": False, "error": str(exc)},
             status_code=500,
         )
-
 
 # ================= WEBSOCKET =================
 
